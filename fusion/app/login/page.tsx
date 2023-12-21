@@ -1,8 +1,8 @@
-import LoginForm from "@/app/ui/login-form";
+import LoginForm from "@/app/ui/login/login-form";
 
 export default function LoginPage() {
   return (
-    <main>
+    <main className="bg-white">
       <div>
         <LoginForm />
       </div>
