@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { inter } from "@/app/ui/fonts";
+import { openSans } from "@/app/ui/fonts";
 
 export default function LoginForm() {
   return (
@@ -9,28 +9,26 @@ export default function LoginForm() {
           <Image src="/login.png" alt="Login Image" width={400} height={400} />
         </div>
       </div>
-      <div className="flex items-center justify-center w-full md:w-3/4 h-full bg-white text-black md:mr-20">
+      <div className="flex items-center justify-center w-full md:w-3/4 h-full text-black md:mr-20">
         <div className="w-full max-w-md">
           <div className="text-center">
             <Image
               src="/logo.png"
               alt="Logo"
-              width={250} // Ajuste a largura conforme necessário
-              height={60} // Ajuste a altura conforme necessário
-              quality={100} // Ajuste a qualidade da imagem
+              width={200}
+              height={60}
+              quality={100}
               className="mx-auto"
             />
           </div>
           <form className="space-y-3">
-            <div className="flex-1 rounded-lg px-6 pb-4 pt-2 md:pt-4">
-              <h1 className={`${inter.className} mb-3 text-2xl`}>
-                Faça login para continuar.
-              </h1>
+            <div className="rounded-lg px-6 pb-4 pt-2 md:pt-4">
               <div className="w-full">
                 <div>
                   <label
-                    className="mb-3 mt-3 block text-xs font-medium text-gray-900"
+                    className={`${openSans.className} mb-3 mt-3 block text-xs font-medium text-gray-900"
                     htmlFor="email"
+                  `}
                   >
                     Email
                   </label>
@@ -95,21 +93,9 @@ export default function LoginForm() {
                   </div>
                 </div>
               </div>
-              <button className="mt-6 w-full rounded-md bg-blue-500 py-2 text-white">
+              <button className="hover:bg-white hover:border-black hover:text-black hover:transition-colors mt-6 w-40 rounded-md bg-black py-2 text-white border border-transparent transition-border">
                 Log in
               </button>
-              <div
-                className="flex h-8 items-end space-x-1 mt-4"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                {/* {errorMessage && (
-                  <>
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-                    <p className="text-sm text-red-500">{errorMessage}</p>
-                  </>
-                )} */}
-              </div>
             </div>
           </form>
         </div>
