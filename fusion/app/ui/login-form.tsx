@@ -3,13 +3,17 @@ import { openSans } from "@/app/ui/fonts";
 
 export default function LoginForm() {
   return (
-    <div className="flex flex-col items-center md:flex-row h-screen">
-      <div className="flex items-center justify-center w-full md:w-1/2 h-full">
-        <div className="flex items-center justify-center w-full h-full relative md:ml-40">
-          <Image src="/login.png" alt="Login Image" width={400} height={400} />
-        </div>
+    <div className="flex flex-col md:flex-row h-screen">
+      <div className="flex items-center justify-center w-full md:w-1/3 h-full relative md:ml-32">
+        <Image
+          src="/login.png"
+          alt="Login Image"
+          width={600}
+          height={400}
+          className="object-cover object-center"
+        />
       </div>
-      <div className="flex items-center justify-center w-full md:w-3/4 h-full text-black md:mr-20">
+      <div className="flex items-center justify-center w-full md:w-1/2 h-full text-black">
         <div className="w-full max-w-md">
           <div className="text-center">
             <Image
@@ -22,13 +26,12 @@ export default function LoginForm() {
             />
           </div>
           <form className="space-y-3">
-            <div className="rounded-lg px-6 pb-4 pt-2 md:pt-4">
+            <div className="rounded-lg px-6 pb-4">
               <div className="w-full">
                 <div>
                   <label
-                    className={`${openSans.className} mb-3 mt-3 block text-xs font-medium text-gray-900"
+                    className={`${openSans.className} mb-3 mt-3 block text-xs font-medium text-gray-900`}
                     htmlFor="email"
-                  `}
                   >
                     Email
                   </label>

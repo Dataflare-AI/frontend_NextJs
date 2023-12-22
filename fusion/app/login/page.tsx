@@ -2,7 +2,7 @@ import LoginForm from "@/app/ui/login-form";
 
 export default function LoginPage() {
   return (
-    <main className="bg-gradient-to-r from-white via-white to-blue-500">
+    <main className="bg-white">
       <div>
         <LoginForm />
       </div>
