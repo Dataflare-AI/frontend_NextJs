@@ -1,4 +1,6 @@
-import useState from "react-dom";
+"use client";
+
+import { useState } from "react";
 import Container from "./container";
 
 const Video = () => {

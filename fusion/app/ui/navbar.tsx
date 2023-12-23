@@ -1,7 +1,7 @@
 "use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import useState from "react-dom";
 
 const Navbar = () => {
   const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
