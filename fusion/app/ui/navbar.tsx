@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { openSans } from "@/app/ui/fonts";
 
 const Navbar = () => {
-  const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
+  const navigation = ["Produtos", "Segmentos", "Sobre", "Assinatura"];
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -12,23 +13,19 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full">
-      <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
+    <div className="w-full bg-white">
+      <nav className="container relative flex flex-wrap items-center justify-between mx-auto lg:justify-between xl:px-0">
         {/* Logo  */}
         <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
           <Link href="/">
-            <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
-              <span>
-                <Image
-                  src="/img/logo.svg"
-                  alt="N"
-                  width="32"
-                  height="32"
-                  className="w-8"
-                />
-              </span>
-              <span>Nextly</span>
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={100}
+              height={60}
+              quality={100}
+              className="mx-auto"
+            />
           </Link>
 
           <button
@@ -74,9 +71,9 @@ const Navbar = () => {
           ))}
           <Link
             href="/"
-            className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5"
+            className={`${openSans.className}w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5`}
           >
-            Get Started
+            Entrar
           </Link>
         </div>
 
@@ -87,7 +84,7 @@ const Navbar = () => {
               <li className="mr-3 nav__item" key={index}>
                 <Link
                   href="/"
-                  className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
+                  className={`${openSans.className}inline-block px-4 py-2 text-lg font-normal text-gray-700 no-underline rounded-md dark:text-gray-200 hover:text-black focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800`}
                 >
                   {menu}
                 </Link>
@@ -98,10 +95,10 @@ const Navbar = () => {
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
           <Link
-            href="/"
-            className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5"
+            href="/login"
+            className={`${openSans.className}px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md md:ml-5 w-40 text-center`}
           >
-            Get Started
+            Fazer Login
           </Link>
 
           {/* Inclua o componente ThemeChanger aqui, se necessário */}

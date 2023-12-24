@@ -1,9 +1,7 @@
-import Image from "next/image";
-import Head from "next/head";
 import Navbar from "./ui/navbar";
 import Hero from "./ui/hero";
 import SectionTitle from "./ui/sectionTitle";
-// import Benefits from "./ui/benefits";
+import Benefits from "./ui/benefits";
 import Video from "./ui/video";
 import Testimonials from "./ui/testimonials";
 import Faq from "./ui/faq";
@@ -12,28 +10,15 @@ import Footer from "./ui/footer";
 import PopupWidget from "./ui/popupWidget";
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Nextly - Free Nextjs & TailwindCSS Landing Page Template</title>
-        <meta
-          name="description"
-          content="Nextly is a free landing page template built with next.js & Tailwind CSS"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <body className="bg-white">
       <Navbar />
       <Hero />
-      <SectionTitle
-        pretitle="Nextly Benefits"
-        title=" Why should you use this landing page"
-      >
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
+      <SectionTitle>
+        Conectando Pontos, Revelando Oportunidades: Desvende o Potencial Oculto
+        dos Seus Dados com a FusionAPI.
       </SectionTitle>
-      {/* <Benefits />
-      <Benefits imgPos="right" /> */}
+      <Benefits />
+      <Benefits imgPos="right" />
       <SectionTitle
         pretitle="Watch a video"
         title="Learn how to fullfil your needs"
@@ -59,6 +44,6 @@ export default function Home() {
       <Cta />
       <Footer />
       <PopupWidget />
-    </>
+    </body>
   );
 }

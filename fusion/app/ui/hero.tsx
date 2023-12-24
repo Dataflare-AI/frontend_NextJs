@@ -1,33 +1,37 @@
 import Image from "next/image";
 import Container from "./container";
-import heroImg from "@/public/hero.png";
+import heroImg from "@/public/solucao.png";
+import { openSans } from "@/app/ui/fonts";
 
 const Hero = () => {
   return (
     <>
-      <Container className="flex flex-wrap ">
+      <Container className="flex flex-wrap bg-white">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-              Free Landing Page Template for startups
+            <h1
+              className={`${openSans.className}text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white`}
+            >
+              A Solução Definitiva em Análise de Dados!
             </h1>
-            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-              Nextly is a free landing page & marketing website template for
-              startups and indie projects. Its built with Next.js & TailwindCSS.
-              And its completely open-source.
+            <p
+              className={`${openSans.className}py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300`}
+            >
+              Conectando Pontos, Revelando Oportunidades: Desvende o Potencial
+              Oculto dos Seus Dados com a FusionAPI.
             </p>
 
             <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
               <a
-                href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
+                href="/login"
                 target="_blank"
                 rel="noopener"
-                className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md "
+                className={`${openSans.className} hover:bg-white hover:border-black hover:text-black bg-black text-white border border-transparent transition-border rounded-md md:ml-5 text-center px-8 py-4 text-lg font-medium`}
               >
-                Download for Free
+                Fazer Login
               </a>
               <a
-                href="https://github.com/web3templates/nextly-template/"
+                href="https://github.com/Dataflare-AI/frontend_NextJs"
                 target="_blank"
                 rel="noopener"
                 className="flex items-center space-x-2 text-gray-500 dark:text-gray-400"
@@ -64,7 +68,7 @@ const Hero = () => {
         </div>
       </Container>
       <Container>
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center bg-white">
           <div className="text-xl text-center text-gray-700 dark:text-white">
             Trusted by <span className="text-indigo-600">2000+</span> customers
             worldwide

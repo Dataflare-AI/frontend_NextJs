@@ -41,7 +41,7 @@ export default function LoginForm() {
                       id="email"
                       type="email"
                       name="email"
-                      placeholder="Enter your email address"
+                      placeholder="Insira seu endereço de e-mail"
                       required
                     />
                     <svg
@@ -66,7 +66,7 @@ export default function LoginForm() {
                     className="mb-3 mt-4 block text-xs font-medium text-gray-900"
                     htmlFor="password"
                   >
-                    Password
+                    Senha
                   </label>
                   <div className="relative">
                     <input
@@ -74,7 +74,7 @@ export default function LoginForm() {
                       id="password"
                       type="password"
                       name="password"
-                      placeholder="Enter password"
+                      placeholder="Insira sua senha"
                       required
                       minLength={6}
                     />
@@ -97,7 +97,7 @@ export default function LoginForm() {
                 </div>
               </div>
               <button className="hover:bg-white hover:border-black hover:text-black hover:transition-colors mt-6 w-40 rounded-md bg-black py-2 text-white border border-transparent transition-border">
-                Log in
+                Entrar
               </button>
             </div>
           </form>
