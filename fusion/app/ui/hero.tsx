@@ -6,17 +6,13 @@ import { openSans } from "@/app/ui/fonts";
 const Hero = () => {
   return (
     <>
-      <Container className="flex flex-wrap bg-white">
+      <Container className="flex flex-wrap bg-white p-8 rounded-lg">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
-            <h1
-              className={`${openSans.className}text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white`}
-            >
+            <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
               A Solução Definitiva em Análise de Dados!
             </h1>
-            <p
-              className={`${openSans.className}py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300`}
-            >
+            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
               Conectando Pontos, Revelando Oportunidades: Desvende o Potencial
               Oculto dos Seus Dados com a FusionAPI.
             </p>
@@ -26,7 +22,7 @@ const Hero = () => {
                 href="/login"
                 target="_blank"
                 rel="noopener"
-                className={`${openSans.className} hover:bg-white hover:border-black hover:text-black bg-black text-white border border-transparent transition-border rounded-md md:ml-5 text-center px-8 py-4 text-lg font-medium`}
+                className="hover:bg-black hover:border-black hover:text-white bg-white text-black border border-black transition-all rounded-md md:ml-5 text-center px-8 py-4 text-lg font-medium"
               >
                 Fazer Login
               </a>
@@ -59,7 +55,7 @@ const Hero = () => {
               src={heroImg}
               width="616"
               height="617"
-              className={"object-cover"}
+              className={"object-cover rounded-md"}
               alt="Hero Illustration"
               loading="eager"
               placeholder="blur"
@@ -67,6 +63,7 @@ const Hero = () => {
           </div>
         </div>
       </Container>
+
       <Container>
         <div className="flex flex-col justify-center bg-white">
           <div className="text-xl text-center text-gray-700 dark:text-white">
