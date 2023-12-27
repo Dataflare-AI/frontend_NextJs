@@ -4,14 +4,11 @@ import { useState } from "react";
 import * as XLSX from "xlsx";
 
 function App() {
-  // onchange states
   const [excelFile, setExcelFile] = useState(null);
   const [typeError, setTypeError] = useState(null);
-
-  // submit state
   const [excelData, setExcelData] = useState(null);
+  const [selectedColumn, setSelectedColumn] = useState(null);
 
-  // onchange event
   const handleFile = (e) => {
     let fileTypes = [
       "application/vnd.ms-excel",
@@ -19,6 +16,7 @@ function App() {
       "text/csv",
     ];
     let selectedFile = e.target.files[0];
+
     if (selectedFile) {
       if (selectedFile && fileTypes.includes(selectedFile.type)) {
         setTypeError(null);
@@ -28,7 +26,7 @@ function App() {
           setExcelFile(e.target.result);
         };
       } else {
-        setTypeError("Please select only excel file types");
+        setTypeError("Please select only Excel file types");
         setExcelFile(null);
       }
     } else {
@@ -36,7 +34,6 @@ function App() {
     }
   };
 
-  // submit event
   const handleFileSubmit = (e) => {
     e.preventDefault();
     if (excelFile !== null) {
@@ -48,59 +45,72 @@ function App() {
     }
   };
 
-  return (
-    <div className="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
-      <h3 className="text-2xl font-bold mb-4">Upload & View Excel Sheets</h3>
+  const handleColumnSelect = (e) => {
+    setSelectedColumn(e.target.value);
+  };
 
-      {/* form */}
-      <form className="flex items-center space-x-4" onSubmit={handleFileSubmit}>
+  return (
+    <div className="wrapper bg-gray-100 p-8">
+      <h3 className="text-3xl font-bold mb-6">Upload & View Excel Sheets</h3>
+
+      <form className="form-group custom-form" onSubmit={handleFileSubmit}>
         <input
           type="file"
-          className="py-2 px-4 border border-gray-300 rounded-md"
+          className="form-control border rounded p-2"
           required
           onChange={handleFile}
         />
         <button
           type="submit"
-          className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-green-400"
+          className="btn btn-success btn-md mt-2 p-2 rounded"
         >
           UPLOAD
         </button>
-        {typeError && <div className="text-red-600">{typeError}</div>}
+        {typeError && (
+          <div className="alert alert-danger mt-2" role="alert">
+            {typeError}
+          </div>
+        )}
       </form>
 
-      {/* view data */}
-      <div className="mt-8">
-        {excelData ? (
-          <div className="table-responsive">
-            <table className="table-auto w-full">
-              <thead>
-                <tr>
-                  {Object.keys(excelData[0]).map((key) => (
-                    <th key={key} className="border px-4 py-2">
-                      {key}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
+      {excelData && (
+        <div>
+          <label htmlFor="columnDropdown">Selecione uma coluna:</label>
+          <select
+            id="columnDropdown"
+            name="column"
+            onChange={handleColumnSelect}
+            value={selectedColumn}
+          >
+            {Object.keys(excelData[0]).map((key) => (
+              <option key={key} value={key}>
+                {key}
+              </option>
+            ))}
+          </select>
 
-              <tbody>
-                {excelData.map((individualExcelData, index) => (
-                  <tr key={index}>
-                    {Object.keys(individualExcelData).map((key) => (
-                      <td key={key} className="border px-4 py-2">
-                        {individualExcelData[key]}
-                      </td>
-                    ))}
+          <div className="viewer mt-4">
+            <div className="table-responsive">
+              <table className="table border-collapse border w-full">
+                <thead className="bg-gray-200">
+                  <tr>
+                    <th className="border p-2">{selectedColumn}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {excelData.map((individualExcelData, index) => (
+                    <tr key={index}>
+                      <td className="border p-2">
+                        {individualExcelData[selectedColumn]}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        ) : (
-          <div>No File is uploaded yet!</div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

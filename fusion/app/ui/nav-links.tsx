@@ -10,12 +10,12 @@ import clsx from "clsx";
 const links = [
   { name: "Home", href: "/dashboard", icon: HomeIcon },
   {
-    name: "Import Files",
+    name: "Importar",
     href: "/dashboard/importFiles",
     icon: DocumentDuplicateIcon,
   },
   {
-    name: "View Files",
+    name: "Visualizar",
     href: "/dashboard/viewFiles",
     icon: DocumentDuplicateIcon,
   },
