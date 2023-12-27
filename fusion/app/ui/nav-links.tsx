@@ -14,11 +14,11 @@ const links = [
     href: "/dashboard/importFiles",
     icon: DocumentDuplicateIcon,
   },
-  {
-    name: "Visualizar",
-    href: "/dashboard/viewFiles",
-    icon: DocumentDuplicateIcon,
-  },
+  // {
+  //   name: "Visualizar",
+  //   href: "/dashboard/viewFiles",
+  //   icon: DocumentDuplicateIcon,
+  // },
 ];
 
 export default function NavLinks() {
