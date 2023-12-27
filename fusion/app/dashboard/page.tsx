@@ -2,7 +2,7 @@
 
 import { FaUpload, FaTable, FaComments } from "react-icons/fa";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
 function App() {
@@ -34,39 +34,42 @@ function App() {
     ],
   };
 
-  // Função para criar gráfico de barras
-  const createBarChart = (chartData, canvasId) => {
-    const canvas = document.getElementById(canvasId);
+  const barChartRef = useRef(null);
+  const pieChartRef = useRef(null);
 
+  // Função para criar/grafico de barras
+  const createBarChart = (chartData, canvasRef) => {
+    const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      new Chart(ctx, {
+      if (barChartRef.current) {
+        barChartRef.current.destroy();
+      }
+      barChartRef.current = new Chart(ctx, {
         type: "bar",
         data: chartData,
       });
-    } else {
-      console.error(`Canvas element with ID '${canvasId}' not found`);
     }
   };
 
-  // Função para criar gráfico de pizza
-  const createPieChart = (chartData, canvasId) => {
-    const canvas = document.getElementById(canvasId);
-
+  // Função para criar/grafico de pizza
+  const createPieChart = (chartData, canvasRef) => {
+    const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      new Chart(ctx, {
+      if (pieChartRef.current) {
+        pieChartRef.current.destroy();
+      }
+      pieChartRef.current = new Chart(ctx, {
         type: "doughnut",
         data: chartData,
       });
-    } else {
-      console.error(`Canvas element with ID '${canvasId}' not found`);
     }
   };
 
   useEffect(() => {
-    createBarChart(barChartData, "barChartCanvas");
-    createPieChart(pieChartData, "pieChartCanvas");
+    createBarChart(barChartData, barChartRef);
+    createPieChart(pieChartData, pieChartRef);
   }, []); // Executar uma vez ao montar o componente
 
   return (
