@@ -24,7 +24,7 @@ export default function Home() {
       </SectionTitle>
       <Benefits data={benefitOne} />
       <Benefits data={benefitTwo} />
-      <SectionTitle
+      {/* <SectionTitle
         pretitle="Assista a um Vídeo"
         title="Descubra como a nossa solução pode atender às suas necessidades."
       >
@@ -32,7 +32,7 @@ export default function Home() {
         como nossa solução em análise de dados pode revolucionar sua compreensão
         e aproveitamento de informações assistindo ao vídeo abaixo!
       </SectionTitle>
-      <Video />
+      <Video /> */}
       <SectionTitle
         pretitle="Avaliações"
         title="O que nossos usuários estão dizendo"

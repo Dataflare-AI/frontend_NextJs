@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { openSans } from "@/app/ui/fonts";
+import ThemeChanger from "./DarkSwitch";
 
 const Navbar = () => {
   const navigation = ["Produtos", "Segmentos", "Sobre", "Assinatura"];
@@ -107,7 +108,7 @@ const Navbar = () => {
             Fazer Login
           </Link>
 
-          {/* Inclua o componente ThemeChanger aqui, se necessário */}
+          <ThemeChanger />
         </div>
       </nav>
     </header>
