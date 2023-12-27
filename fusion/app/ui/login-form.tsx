@@ -27,6 +27,7 @@ export default function LoginForm() {
           </div>
           <form className="space-y-3">
             <div className="rounded-lg px-6 pb-4">
+              <h1 className="text-2xl">Faça login para continuar</h1>
               <div className="w-full">
                 <div>
                   <label
