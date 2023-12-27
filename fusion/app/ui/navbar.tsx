@@ -19,7 +19,7 @@ const Navbar = () => {
     <header className="w-full bg-white">
       <nav className="container relative flex flex-wrap items-center justify-between mx-auto lg:justify-between xl:px-0">
         {/* Logo  */}
-        <div className="flex items-center justify-between w-full lg:w-auto">
+        <div className="px-4 flex items-center justify-between w-full lg:w-auto">
           <Link href="/">
             <Image
               src="/logo.png"
@@ -68,7 +68,7 @@ const Navbar = () => {
         <div
           className={`${
             isMobileMenuOpen ? "flex" : "hidden"
-          } flex-wrap w-full my-5 lg:flex lg:hidden`}
+          } flex-wrap w-full my-5 px-5 slg:flex lg:hidden`}
         >
           {navigation.map((item) => (
             <Link
@@ -81,7 +81,7 @@ const Navbar = () => {
           ))}
           <Link
             href="/"
-            className={`${openSans.className}px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md  w-40 text-center`}
+            className={`${openSans.className}px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md  w-full text-center`}
           >
             Fazer Login
           </Link>
