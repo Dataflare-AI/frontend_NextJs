@@ -64,7 +64,7 @@ export default function Footer() {
             <div>Siga-nos</div>
             <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
               <a
-                href="https://twitter.com/web3templates"
+                href="/"
                 target="_blank"
                 rel="noopener"
               >
@@ -72,14 +72,14 @@ export default function Footer() {
                 <Twitter />
               </a>
               <a
-                href="https://instagram.com/web3templates"
+                href="/"
                 target="_blank"
                 rel="noopener"
               >
                 <span className="sr-only">Instagram</span>
                 <Instagram />
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener">
+              <a href="/" target="_blank" rel="noopener">
                 <span className="sr-only">Linkedin</span>
                 <Linkedin />
               </a>

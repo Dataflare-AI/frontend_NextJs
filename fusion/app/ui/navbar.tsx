@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { openSans } from "@/app/ui/fonts";
-import ThemeChanger from "./DarkSwitch";
+// import ThemeChanger from "./DarkSwitch";
 
 const Navbar = () => {
   const navigation = ["Produtos", "Segmentos", "Sobre", "Assinatura"];
@@ -64,7 +64,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* menu  */}
+        {/* menu mobile */}
         <div
           className={`${
             isMobileMenuOpen ? "flex" : "hidden"
@@ -80,7 +80,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="/"
+            href="/login"
             className={`${openSans.className}px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md  w-full text-center`}
           >
             Entrar
@@ -91,7 +91,7 @@ const Navbar = () => {
         <div className="hidden text-center lg:flex lg:items-center">
           <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
             {navigation.map((menu) => (
-              <li className="mr-3 nav__item" key={menu}>
+              <li className="text-gray-700 mr-3 nav__item" key={menu}>
                 <Link href="/" className={menuItemClass}>
                   {menu}
                 </Link>
@@ -108,7 +108,7 @@ const Navbar = () => {
             Entrar
           </Link>
 
-          <ThemeChanger />
+          {/* <ThemeChanger /> */}
         </div>
       </nav>
     </header>

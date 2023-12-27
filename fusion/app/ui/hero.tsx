@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Container from "./container";
-import heroImg from "@/public/solucao.png";
+import heroImg from "@/public/hero  .jpeg";
 import { openSans } from "@/app/ui/fonts";
 
 const Hero = () => {

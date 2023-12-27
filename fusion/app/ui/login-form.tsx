@@ -6,7 +6,7 @@ export default function LoginForm() {
     <div className="flex flex-col md:flex-row h-screen">
       <div className="flex items-center justify-center w-full md:w-1/3 h-full relative md:ml-32">
         <Image
-          src="/login.png"
+          src="/loginMobile.jpeg"
           alt="Login Image"
           width={600}
           height={400}
