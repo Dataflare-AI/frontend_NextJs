@@ -1,3 +1,4 @@
+import React from "react";
 import Navbar from "./ui/navbar";
 import Hero from "./ui/hero";
 import SectionTitle from "./ui/sectionTitle";
@@ -8,33 +9,37 @@ import Faq from "./ui/faq";
 import Cta from "./ui/cta";
 import Footer from "./ui/footer";
 import PopupWidget from "./ui/popupWidget";
+import { benefitTwo, benefitOne } from "./ui/data";
+
+import "./ui/global.css";
 
 export default function Home() {
   return (
-    <body className="bg-white">
+    <div className="app-container bg-white">
       <Navbar />
       <Hero />
-      <SectionTitle>
-        Conectando Pontos, Revelando Oportunidades: Desvende o Potencial Oculto
-        dos Seus Dados com a FusionAPI.
+      <SectionTitle pretitle="Vantagens" title="Potencialize Seus Resultados!">
+        Desbloqueie Insights Poderosos com Nossa Solução! Conecte-se ao futuro
+        da análise de dados e impulsione seu produto com nossa plataforma.
       </SectionTitle>
-      <Benefits />
-      <Benefits imgPos="right" />
+      <Benefits data={benefitOne} />
+      <Benefits data={benefitTwo} />
       <SectionTitle
-        pretitle="Watch a video"
-        title="Learn how to fulfill your needs"
+        pretitle="Assista a um Vídeo"
+        title="Descubra como a nossa solução pode atender às suas necessidades."
       >
-        This section is to highlight a promo or demo video of your product.
-        Analysts say a landing page with a video has a 3% higher conversion
-        rate. So, don't forget to add one. Just like this.
+        Explore as funcionalidades e benefícios do nosso produto em ação. Veja
+        como nossa solução em análise de dados pode revolucionar sua compreensão
+        e aproveitamento de informações assistindo ao vídeo abaixo!
       </SectionTitle>
       <Video />
       <SectionTitle
-        pretitle="Testimonials"
-        title="Here's what our customers said"
+        pretitle="Avaliações"
+        title="O que nossos usuários estão dizendo"
       >
-        Testimonials are a great way to increase brand trust and awareness. Use
-        this section to highlight your popular customers.
+        Avaliações são uma ótima maneira de aumentar a confiança e a
+        conscientização da marca. Utilize esta seção para destacar os
+        depoimentos dos nossos usuários mais satisfeitos.
       </SectionTitle>
       <Testimonials />
       <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
@@ -45,6 +50,6 @@ export default function Home() {
       <Cta />
       <Footer />
       <PopupWidget />
-    </body>
+    </div>
   );
 }
