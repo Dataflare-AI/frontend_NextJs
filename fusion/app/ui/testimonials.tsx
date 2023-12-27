@@ -13,8 +13,7 @@ const Testimonials = () => {
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              "Estou impressionado com a qualidade dos insights que obtive
-              usando esta plataforma. Realmente potencializou minha capacidade
+              "Realmente potencializou minha capacidade
               de análise de dados!"
             </p>
 
@@ -29,8 +28,7 @@ const Testimonials = () => {
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
               "Simplesmente incrível! Essa ferramenta simplificou todo o
-              processo de análise de dados. Recomendo para todos os analistas lá
-              fora."
+              processo de análise de dados."
             </p>
 
             <AvaliacaoAvatar
@@ -43,7 +41,7 @@ const Testimonials = () => {
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              "Este é um verdadeiro divisor de águas! A forma como apresentam os
+              "A forma como apresentam os
               insights é simplesmente incrível. Não poderia pedir mais."
             </p>
 
