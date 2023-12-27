@@ -18,11 +18,11 @@ const Faq = () => {
           <div key={item.question} className="mb-5">
             <button
               onClick={() => handleToggle(index)}
-              className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-gray-200"
+              className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-gray-800 rounded-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-gray-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-gray-200"
             >
               <span>{item.question}</span>
               {/* Use seu ícone desejado aqui, substituindo ChevronUpIcon */}
-              <span className="w-5 h-5 text-indigo-500">
+              <span className="w-5 h-5 text-gray-500">
                 {openIndex === index ? "▼" : "▶"}
               </span>
             </button>
@@ -40,22 +40,24 @@ const Faq = () => {
 
 const faqdata = [
   {
-    question: "Is this template completely free to use?",
-    answer: "Yes, this template is completely free to use.",
-  },
-  {
-    question: "Can I use it in a commercial project?",
-    answer: "Yes, you can.",
-  },
-  {
-    question: "What is your refund policy? ",
+    question: "O serviço é gratuito?",
     answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
+      "Não, nossa plataforma é paga e oferece planos ajustados às necessidades das empresas que desejam melhorar seu desempenho na área de análise de dados.",
   },
   {
-    question: "Do you offer technical support? ",
+    question: "Como posso usar a plataforma em um projeto comercial?",
     answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+      "Você pode utilizar nossa plataforma em projetos comerciais adquirindo um de nossos planos pagos. Entre em contato conosco para discutir as opções disponíveis.",
+  },
+  {
+    question: "Qual é a política de reembolso?",
+    answer:
+      "Se você não estiver satisfeito com nossa plataforma, entre em contato conosco dentro de 30 dias após a compra, e teremos o prazer de discutir opções de reembolso ou ajustes de plano.",
+  },
+  {
+    question: "Vocês oferecem suporte técnico?",
+    answer:
+      "Sim, oferecemos suporte técnico para clientes que adquirem nossos planos premium. Nossa equipe está pronta para ajudar a garantir que você obtenha o máximo de benefícios de nossa plataforma.",
   },
 ];
 

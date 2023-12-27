@@ -13,42 +13,44 @@ const Testimonials = () => {
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Share a real <Mark>testimonial</Mark>
-              that hits some of your benefits from one of your popular customer.
+              "Estou impressionado com a qualidade dos insights que obtive
+              usando esta plataforma. Realmente potencializou minha capacidade
+              de análise de dados!"
             </p>
 
-            <Avatar
+            <AvaliacaoAvatar
               image={userOneImg}
               name="Sarah Steiner"
-              title="VP Sales at Google"
+              title="Cientista de Dados na EmpresaX"
             />
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Make sure you only pick the <Mark>right sentence</Mark>
-              to keep it short and simple.
+              "Simplesmente incrível! Essa ferramenta simplificou todo o
+              processo de análise de dados. Recomendo para todos os analistas lá
+              fora."
             </p>
 
-            <Avatar
+            <AvaliacaoAvatar
               image={userTwoImg}
-              name="Dylan Ambrose"
-              title="Lead marketer at Netflix"
+              name="Marcos Conceição"
+              title="Analista de Dados na EmpresaY"
             />
           </div>
         </div>
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              This is an <Mark>awesome</Mark> landing page template I&apos;ve
-              seen. I would use this for anything.
+              "Este é um verdadeiro divisor de águas! A forma como apresentam os
+              insights é simplesmente incrível. Não poderia pedir mais."
             </p>
 
-            <Avatar
+            <AvaliacaoAvatar
               image={userThreeImg}
-              name="Gabrielle Winn"
-              title="Co-founder of Acme Inc"
+              name="Pedro Silveira"
+              title="Co-fundador da EmpresaZ"
             />
           </div>
         </div>
@@ -57,7 +59,7 @@ const Testimonials = () => {
   );
 };
 
-function Avatar(props) {
+function AvaliacaoAvatar(props) {
   return (
     <div className="flex items-center mt-8 space-x-3">
       <div className="flex-shrink-0 overflow-hidden rounded-full w-14 h-14">

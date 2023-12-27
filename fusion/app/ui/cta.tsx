@@ -4,23 +4,24 @@ import Container from "./container";
 const Cta = () => {
   return (
     <Container>
-      <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-white bg-indigo-600 px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
+      <div className="flex flex-wrap items-center justify-between w-full max-w-4xl gap-5 mx-auto text-white bg-black px-7 py-7 lg:px-12 lg:py-12 lg:flex-nowrap rounded-xl">
         <div className="flex-grow text-center lg:text-left">
           <h2 className="text-2xl font-medium lg:text-3xl">
-            Ready to try-out this template?
+            Pronto para experimentar este produto?
           </h2>
           <p className="mt-2 font-medium text-white text-opacity-90 lg:text-xl">
-            Don&apos;t let your visitors see a poor landing.
+            Cadastre-se agora ou faca login para que voce tenha acesso a todas
+            as funcionalidades.
           </p>
         </div>
         <div className="flex-shrink-0 w-full text-center lg:w-auto">
           <a
-            href="https://github.com/web3templates"
+            href="/login"
             target="_blank"
             rel="noopener"
-            className="inline-block py-3 mx-auto text-lg font-medium text-center text-indigo-600 bg-white rounded-md px-7 lg:px-10 lg:py-5 "
+            className="hover:bg-black hover:border-white hover:text-white bg-white text-black border border-black transition-all rounded-md md:ml-5 text-center px-8 py-4 text-lg font-medium"
           >
-            Download for Free
+            Fazer Login
           </a>
         </div>
       </div>

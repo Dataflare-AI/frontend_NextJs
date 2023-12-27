@@ -24,7 +24,7 @@ export default function Home() {
       </SectionTitle>
       <Benefits data={benefitOne} />
       <Benefits data={benefitTwo} />
-      <SectionTitle
+      {/* <SectionTitle
         pretitle="Assista a um Vídeo"
         title="Descubra como a nossa solução pode atender às suas necessidades."
       >
@@ -32,19 +32,21 @@ export default function Home() {
         como nossa solução em análise de dados pode revolucionar sua compreensão
         e aproveitamento de informações assistindo ao vídeo abaixo!
       </SectionTitle>
-      <Video />
+      <Video /> */}
       <SectionTitle
         pretitle="Avaliações"
         title="O que nossos usuários estão dizendo"
       >
         Avaliações são uma ótima maneira de aumentar a confiança e a
-        conscientização da marca. Utilize esta seção para destacar os
-        depoimentos dos nossos usuários mais satisfeitos.
+        conscientização do produto! Veja as avaliações de nossos usuários abaixo
       </SectionTitle>
       <Testimonials />
-      <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers' possible questions here; it will increase the
-        conversion rate as well as support or chat requests.
+      <SectionTitle
+        pretitle="Dúvidas Frequentes"
+        title="Perguntas Comuns sobre Nossa Plataforma"
+      >
+        Aqui estão algumas perguntas frequentes que podem ajudar a esclarecer
+        suas dúvidas. Se você tiver outras perguntas, entre em contato conosco
       </SectionTitle>
       <Faq />
       <Cta />
