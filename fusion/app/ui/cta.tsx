@@ -21,7 +21,7 @@ const Cta = () => {
             rel="noopener"
             className="hover:bg-black hover:border-white hover:text-white bg-white text-black border border-black transition-all rounded-md md:ml-5 text-center px-8 py-4 text-lg font-medium"
           >
-            Fazer Login
+            Entrar
           </a>
         </div>
       </div>

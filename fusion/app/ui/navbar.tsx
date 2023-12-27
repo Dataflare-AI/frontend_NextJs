@@ -83,7 +83,7 @@ const Navbar = () => {
             href="/"
             className={`${openSans.className}px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md  w-full text-center`}
           >
-            Fazer Login
+            Entrar
           </Link>
         </div>
 
@@ -105,7 +105,7 @@ const Navbar = () => {
             href="/login"
             className={`${openSans.className}px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md md:ml-5 w-40 text-center`}
           >
-            Fazer Login
+            Entrar
           </Link>
 
           <ThemeChanger />

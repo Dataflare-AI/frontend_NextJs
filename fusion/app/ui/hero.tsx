@@ -24,7 +24,7 @@ const Hero = () => {
                 rel="noopener"
                 className="hover:bg-black hover:border-black hover:text-white bg-white text-black border border-black transition-all rounded-md md:ml-5 text-center px-8 py-4 text-lg font-medium"
               >
-                Fazer Login
+                Entrar
               </a>
               <a
                 href="https://github.com/Dataflare-AI/frontend_NextJs"
