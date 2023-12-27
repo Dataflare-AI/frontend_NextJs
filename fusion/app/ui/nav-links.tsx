@@ -10,7 +10,7 @@ import clsx from "clsx";
 const links = [
   { name: "Home", href: "/dashboard", icon: HomeIcon },
   {
-    name: "Importar",
+    name: "Arquivo",
     href: "/dashboard/importFiles",
     icon: DocumentDuplicateIcon,
   },
