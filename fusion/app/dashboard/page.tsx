@@ -48,7 +48,7 @@ function App() {
     ],
   };
 
-  const barChartRef = useRef(null);
+  const barChartRef = useRef<Chart<"bar", number[], string> | null>(null);
   const pieChartRef = useRef(null);
 
   // Função para criar/gráfico de barras
@@ -60,7 +60,7 @@ function App() {
     if (canvas) {
       const ctx = canvas.getContext("2d");
       if (barChartRef.current) {
-        (barChartRef.current as Chart).destroy(); // Use type assertion
+        barChartRef.current.destroy();
       }
       barChartRef.current = new Chart(ctx, {
         type: "bar",
@@ -68,7 +68,6 @@ function App() {
       });
     }
   };
-
   // Função para criar/gráfico de pizza
   const createPieChart = (chartData, canvasRef) => {
     const canvas = canvasRef.current;
