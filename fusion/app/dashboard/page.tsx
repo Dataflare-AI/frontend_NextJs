@@ -19,6 +19,15 @@ interface BarChartData {
   }[];
 }
 
+interface PieChartData {
+  labels: string[];
+  datasets: {
+    data: number[];
+    backgroundColor: string[];
+    hoverBackgroundColor: string[];
+  }[];
+}
+
 function App() {
   // Dados fictícios para o gráfico de barras
   const barChartData: BarChartData = {
@@ -37,7 +46,7 @@ function App() {
   };
 
   // Dados fictícios para o gráfico de pizza
-  const pieChartData = {
+  const pieChartData: PieChartData = {
     labels: ["Machine Learning", "Data Visualization", "Data Analysis"],
     datasets: [
       {
@@ -71,7 +80,10 @@ function App() {
     }
   };
   // Função para criar/gráfico de pizza
-  const createPieChart = (chartData, canvasRef) => {
+  const createPieChart = (
+    chartData: PieChartData,
+    canvasRef: React.RefObject<HTMLCanvasElement>
+  ) => {
     const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
