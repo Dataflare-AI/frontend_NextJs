@@ -58,7 +58,7 @@ function App() {
   };
 
   const barChartRef = useRef<Chart<"bar", number[], string> | null>(null);
-  const pieChartRef = useRef(null);
+  const pieChartRef = useRef<Chart<"doughnut", number[], string> | null>(null);
 
   // Função para criar/gráfico de barras
   const createBarChart = (
@@ -79,7 +79,8 @@ function App() {
       }
     }
   };
-  // Função para criar/gráfico de pizza
+
+  // Função para criar/gráfico de pizzaconst createPieChart = (chartData: PieChartData, canvasRef: React.RefObject<HTMLCanvasElement>) => {
   const createPieChart = (
     chartData: PieChartData,
     canvasRef: React.RefObject<HTMLCanvasElement>
@@ -88,7 +89,7 @@ function App() {
     if (canvas) {
       const ctx = canvas.getContext("2d");
       if (pieChartRef.current) {
-        pieChartRef.current.destroy();
+        (pieChartRef.current as Chart<"doughnut", number[], string>).destroy();
       }
       pieChartRef.current = new Chart(ctx, {
         type: "doughnut",
