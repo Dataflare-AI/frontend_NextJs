@@ -72,18 +72,19 @@ function App() {
       if (
         canvasRef.current &&
         canvasRef.current.current &&
-        typeof canvasRef.current.current === "object" &&
-        "chartInstance" in canvasRef.current.current
+        typeof canvasRef.current.current === "object"
       ) {
-        const { chartInstance } = canvasRef.current.current;
-        chartInstance?.destroy(); // Check if destroy method exists on Chart instance
+        const { chart } = canvasRef.current.current;
+        if (chart) {
+          chart.destroy(); // Check if destroy method exists on Chart object
+        }
       }
       canvasRef.current = canvasRef.current || {};
-      const chartInstance = new Chart(ctx, {
+      const chart = new Chart(ctx, {
         type: "bar",
         data: chartData,
       });
-      canvasRef.current.current = { chartInstance }; // Save the Chart instance to the RefObject
+      canvasRef.current.current = { chart }; // Save the Chart instance to the RefObject
     }
   };
 
@@ -98,18 +99,19 @@ function App() {
       if (
         canvasRef.current &&
         canvasRef.current.current &&
-        typeof canvasRef.current.current === "object" &&
-        "chartInstance" in canvasRef.current.current
+        typeof canvasRef.current.current === "object"
       ) {
-        const { chartInstance } = canvasRef.current.current;
-        chartInstance?.destroy(); // Check if destroy method exists on Chart instance
+        const { chart } = canvasRef.current.current;
+        if (chart) {
+          chart.destroy(); // Check if destroy method exists on Chart object
+        }
       }
       canvasRef.current = canvasRef.current || {};
-      const chartInstance = new Chart(ctx, {
+      const chart = new Chart(ctx, {
         type: "doughnut",
         data: chartData,
       });
-      canvasRef.current.current = { chartInstance }; // Save the Chart instance to the RefObject
+      canvasRef.current.current = { chart }; // Save the Chart instance to the RefObject
     }
   };
 
