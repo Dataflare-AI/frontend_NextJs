@@ -1,6 +1,10 @@
 import React from "react";
 
-const Container = (props) => {
+interface ContainerProps {
+  className?: string;
+}
+
+const Container: React.FC<ContainerProps> = (props) => {
   return (
     <div
       className={`container p-8 mx-auto xl:px-0 ${
