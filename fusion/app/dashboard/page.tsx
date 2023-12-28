@@ -60,7 +60,7 @@ function App() {
     if (canvas) {
       const ctx = canvas.getContext("2d");
       if (barChartRef.current) {
-        barChartRef.current.destroy();
+        (barChartRef.current as Chart).destroy(); // Use type assertion
       }
       barChartRef.current = new Chart(ctx, {
         type: "bar",
