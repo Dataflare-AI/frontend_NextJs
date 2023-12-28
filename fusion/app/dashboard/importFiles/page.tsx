@@ -61,12 +61,11 @@ function App() {
     if (window.innerWidth > 768) {
       const dropdownScrollOptions = {
         top: document.getElementById("columnDropdown")?.offsetTop || 0,
-        behavior: "smooth",
+        behavior: "smooth" as ScrollBehavior,
       };
       window.scrollTo(dropdownScrollOptions);
     }
   };
-
   return (
     <div className="wrapper p-8 bg-white">
       <h3 className="text-3xl font-bold mb-6">
