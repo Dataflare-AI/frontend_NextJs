@@ -114,7 +114,7 @@ function App() {
             ))}
           </select>
 
-          <div className="viewer mt-4">
+          <div className="viewer mt-4 overflow-x-auto">
             <div className="table-responsive">
               <table className="table border-collapse border w-full">
                 <thead className="bg-gray-200">
