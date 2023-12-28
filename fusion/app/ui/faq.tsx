@@ -5,9 +5,10 @@ import Container from "./container";
 // import { ChevronUpIcon } from "@heroicons/react/24/solid";
 
 const Faq = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null); // Specify the type
 
-  const handleToggle = (index) => {
+  const handleToggle = (index: number) => {
+    // Explicitly specify the type
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
