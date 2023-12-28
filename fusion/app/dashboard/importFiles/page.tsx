@@ -24,7 +24,7 @@ function App() {
         let reader = new FileReader();
         reader.readAsArrayBuffer(selectedFile);
         reader.onload = (e) => {
-          setExcelFile(e.target.result as ArrayBuffer);
+          setExcelFile(e?.target?.result as ArrayBuffer);
         };
       } else {
         setTypeError("Por favor, selecione apenas arquivos do tipo Excel");
