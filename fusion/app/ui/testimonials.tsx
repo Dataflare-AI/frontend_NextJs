@@ -23,7 +23,7 @@ const Testimonials = () => {
             </p>
 
             <AvaliacaoAvatar
-              image={userOneImg}
+              image={userOneImg.src}
               name="Sarah Steiner"
               title="Cientista de Dados na EmpresaX"
             />
@@ -37,7 +37,7 @@ const Testimonials = () => {
             </p>
 
             <AvaliacaoAvatar
-              image={userTwoImg}
+              image={userTwoImg.src}
               name="Marcos Conceição"
               title="Analista de Dados na EmpresaY"
             />
@@ -51,7 +51,7 @@ const Testimonials = () => {
             </p>
 
             <AvaliacaoAvatar
-              image={userThreeImg}
+              image={userThreeImg.src}
               name="Pedro Silveira"
               title="Co-fundador da EmpresaZ"
             />
