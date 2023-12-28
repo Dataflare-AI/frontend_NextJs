@@ -14,6 +14,7 @@ const benefitOne = {
   title: "Análise Abrangente de Dados",
   desc: "Utilize análises avançadas para obter insights profundos em seus dados, descobrindo padrões e tendências valiosos.",
   image: benefitOneImg,
+  imgPos: "left",
   bullets: [
     {
       title: "Compreensão do Cliente",
