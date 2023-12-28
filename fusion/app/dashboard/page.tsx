@@ -69,18 +69,23 @@ function App() {
     const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      if (canvasRef.current && canvasRef.current.current) {
-        canvasRef.current.current.destroy?.(); // Check if destroy method exists
+      if (
+        canvasRef.current &&
+        canvasRef.current.current &&
+        canvasRef.current.current.chartInstance
+      ) {
+        canvasRef.current.current.chartInstance.destroy?.(); // Check if destroy method exists on Chart instance
       }
       canvasRef.current = canvasRef.current || {};
-      canvasRef.current.current = new Chart(ctx, {
+      const chartInstance = new Chart(ctx, {
         type: "bar",
         data: chartData,
       });
+      canvasRef.current.current = { chartInstance }; // Save the Chart instance to the RefObject
     }
   };
 
-  // Função para criar/gráfico de pizzaconst createPieChart = (chartData: PieChartData, canvasRef: React.RefObject<HTMLCanvasElement>) => {
+  // Função para criar/gráfico de pizza
   const createPieChart = (
     chartData: PieChartData,
     canvasRef: MutableRefObject<RefObject<HTMLCanvasElement> | null>
@@ -88,14 +93,19 @@ function App() {
     const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      if (canvasRef.current && canvasRef.current.current) {
-        canvasRef.current.current.destroy?.(); // Check if destroy method exists
+      if (
+        canvasRef.current &&
+        canvasRef.current.current &&
+        canvasRef.current.current.chartInstance
+      ) {
+        canvasRef.current.current.chartInstance.destroy?.(); // Check if destroy method exists on Chart instance
       }
       canvasRef.current = canvasRef.current || {};
-      canvasRef.current.current = new Chart(ctx, {
+      const chartInstance = new Chart(ctx, {
         type: "doughnut",
         data: chartData,
       });
+      canvasRef.current.current = { chartInstance }; // Save the Chart instance to the RefObject
     }
   };
 
