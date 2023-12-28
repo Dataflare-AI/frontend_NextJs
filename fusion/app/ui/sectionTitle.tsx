@@ -1,7 +1,14 @@
 import React from "react";
 import Container from "./container";
 
-const SectionTitle = (props) => {
+interface SectionTitleProps {
+  align?: "left" | "center";
+  pretitle?: string;
+  title?: string;
+  children?: React.ReactNode;
+}
+
+const SectionTitle: React.FC<SectionTitleProps> = (props) => {
   return (
     <Container
       className={`flex w-full flex-col mt-4 ${
