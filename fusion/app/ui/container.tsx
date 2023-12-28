@@ -2,6 +2,7 @@ import React from "react";
 
 interface ContainerProps {
   className?: string;
+  children: React.ReactNode; // Add this line
 }
 
 const Container: React.FC<ContainerProps> = (props) => {
