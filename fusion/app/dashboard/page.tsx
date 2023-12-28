@@ -37,7 +37,7 @@ function App() {
   const barChartRef = useRef(null);
   const pieChartRef = useRef(null);
 
-  // Função para criar/grafico de barras
+  // Função para criar/gráfico de barras
   const createBarChart = (chartData, canvasRef) => {
     const canvas = canvasRef.current;
     if (canvas) {
@@ -52,7 +52,7 @@ function App() {
     }
   };
 
-  // Função para criar/grafico de pizza
+  // Função para criar/gráfico de pizza
   const createPieChart = (chartData, canvasRef) => {
     const canvas = canvasRef.current;
     if (canvas) {
