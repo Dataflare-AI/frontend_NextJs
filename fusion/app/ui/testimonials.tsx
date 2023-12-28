@@ -7,7 +7,7 @@ import userTwoImg from "@/public/user2.jpg";
 import userThreeImg from "@/public/user3.jpg";
 
 interface AvaliacaoAvatarProps {
-  image: StaticImageData;
+  image: string; // Corrected to use string
   name: string;
   title: string;
 }
@@ -61,7 +61,6 @@ const Testimonials = () => {
     </Container>
   );
 };
-
 function AvaliacaoAvatar(props: AvaliacaoAvatarProps) {
   return (
     <div className="flex items-center mt-8 space-x-3">
