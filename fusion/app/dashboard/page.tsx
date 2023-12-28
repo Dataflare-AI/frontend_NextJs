@@ -1,6 +1,7 @@
 "use client";
 
 import { FaUpload, FaTable, FaComments } from "react-icons/fa";
+import { MutableRefObject, RefObject } from "react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { Chart, ChartItem } from "chart.js/auto"; // Make sure to import Chart and ChartItem from the correct module
@@ -57,41 +58,41 @@ function App() {
     ],
   };
 
-  const barChartRef = useRef<Chart<"bar", number[], string> | null>(null);
-  const pieChartRef = useRef<Chart<"doughnut", number[], string> | null>(null);
+  const barChartRef = useRef<RefObject<HTMLCanvasElement> | null>(null);
+  const pieChartRef = useRef<RefObject<HTMLCanvasElement> | null>(null);
 
   // Função para criar/gráfico de barras
   const createBarChart = (
     chartData: BarChartData,
-    canvasRef: React.RefObject<HTMLCanvasElement>
+    canvasRef: MutableRefObject<RefObject<HTMLCanvasElement> | null>
   ) => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
-      const ctx: CanvasRenderingContext2D | null = canvas.getContext("2d");
-      if (ctx) {
-        if (barChartRef.current) {
-          barChartRef.current.destroy();
-        }
-        barChartRef.current = new Chart(ctx, {
-          type: "bar",
-          data: chartData,
-        });
+      const ctx = canvas.getContext("2d");
+      if (canvasRef.current && canvasRef.current.current) {
+        canvasRef.current.current.destroy?.(); // Check if destroy method exists
       }
+      canvasRef.current = canvasRef.current || {};
+      canvasRef.current.current = new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+      });
     }
   };
 
   // Função para criar/gráfico de pizzaconst createPieChart = (chartData: PieChartData, canvasRef: React.RefObject<HTMLCanvasElement>) => {
   const createPieChart = (
     chartData: PieChartData,
-    canvasRef: React.RefObject<HTMLCanvasElement>
+    canvasRef: MutableRefObject<RefObject<HTMLCanvasElement> | null>
   ) => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
-      const ctx = canvas.getContext("2d")!;
-      if (pieChartRef.current) {
-        pieChartRef.current.destroy();
+      const ctx = canvas.getContext("2d");
+      if (canvasRef.current && canvasRef.current.current) {
+        canvasRef.current.current.destroy?.(); // Check if destroy method exists
       }
-      pieChartRef.current = new Chart(ctx, {
+      canvasRef.current = canvasRef.current || {};
+      canvasRef.current.current = new Chart(ctx, {
         type: "doughnut",
         data: chartData,
       });
@@ -101,7 +102,7 @@ function App() {
   useEffect(() => {
     createBarChart(barChartData, barChartRef);
     createPieChart(pieChartData, pieChartRef);
-  }, []); // Executar uma vez ao montar o componente
+  }, []);
 
   return (
     <div className="wrapper p-8 bg-white">
