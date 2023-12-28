@@ -75,7 +75,8 @@ function App() {
         typeof canvasRef.current.current === "object" &&
         "chartInstance" in canvasRef.current.current
       ) {
-        canvasRef.current.current.chartInstance?.destroy(); // Check if destroy method exists on Chart instance
+        const { chartInstance } = canvasRef.current.current;
+        chartInstance?.destroy(); // Check if destroy method exists on Chart instance
       }
       canvasRef.current = canvasRef.current || {};
       const chartInstance = new Chart(ctx, {
@@ -100,7 +101,8 @@ function App() {
         typeof canvasRef.current.current === "object" &&
         "chartInstance" in canvasRef.current.current
       ) {
-        canvasRef.current.current.chartInstance?.destroy(); // Check if destroy method exists on Chart instance
+        const { chartInstance } = canvasRef.current.current;
+        chartInstance?.destroy(); // Check if destroy method exists on Chart instance
       }
       canvasRef.current = canvasRef.current || {};
       const chartInstance = new Chart(ctx, {
