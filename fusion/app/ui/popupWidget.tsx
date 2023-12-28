@@ -4,6 +4,16 @@ import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
 
+interface FormData {
+  apikey: string;
+  subject: string;
+  from_name: string;
+  botcheck: string; // Add any other fields along with their types
+  name: string;
+  email: string;
+  message: string;
+}
+
 const PopupWidget = () => {
   const {
     register,
@@ -11,15 +21,19 @@ const PopupWidget = () => {
     reset,
     control,
     formState: { errors, isSubmitSuccessful, isSubmitting },
-  } = useForm({
+  } = useForm<FormData>({
     mode: "onTouched",
   });
+
   const [isSuccess, setIsSuccess] = useState(false);
   const [Message, setMessage] = useState("");
 
   const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
 
-  const onSubmit = async (data, e) => {
+  const onSubmit = async (
+    data: FormData,
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     console.log(data);
     await fetch("https://api.web3forms.com/submit", {
       method: "POST",
