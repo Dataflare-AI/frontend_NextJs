@@ -6,6 +6,12 @@ import userOneImg from "@/public/user1.jpg";
 import userTwoImg from "@/public/user2.jpg";
 import userThreeImg from "@/public/user3.jpg";
 
+interface AvaliacaoAvatarProps {
+  image: StaticImageData;
+  name: string;
+  title: string;
+}
+
 const Testimonials = () => {
   return (
     <Container>
@@ -13,8 +19,7 @@ const Testimonials = () => {
         <div className="lg:col-span-2 xl:col-auto">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Realmente potencializou minha capacidade
-              de análise de dados!
+              Realmente potencializou minha capacidade de análise de dados!
             </p>
 
             <AvaliacaoAvatar
@@ -27,8 +32,8 @@ const Testimonials = () => {
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              Simplesmente incrível! Essa ferramenta simplificou todo o
-              processo de análise de dados.
+              Simplesmente incrível! Essa ferramenta simplificou todo o processo
+              de análise de dados.
             </p>
 
             <AvaliacaoAvatar
@@ -41,8 +46,8 @@ const Testimonials = () => {
         <div className="">
           <div className="flex flex-col justify-between w-full h-full bg-gray-100 px-14 rounded-2xl py-14 dark:bg-trueGray-800">
             <p className="text-2xl leading-normal ">
-              A forma como apresentam os
-              insights é simplesmente incrível. Não poderia pedir mais.
+              A forma como apresentam os insights é simplesmente incrível. Não
+              poderia pedir mais.
             </p>
 
             <AvaliacaoAvatar
@@ -57,7 +62,7 @@ const Testimonials = () => {
   );
 };
 
-function AvaliacaoAvatar(props) {
+function AvaliacaoAvatar(props: AvaliacaoAvatarProps) {
   return (
     <div className="flex items-center mt-8 space-x-3">
       <div className="flex-shrink-0 overflow-hidden rounded-full w-14 h-14">
@@ -77,7 +82,7 @@ function AvaliacaoAvatar(props) {
   );
 }
 
-function Mark(props) {
+function Mark(props: { children: React.ReactNode }) {
   return (
     <>
       {" "}
