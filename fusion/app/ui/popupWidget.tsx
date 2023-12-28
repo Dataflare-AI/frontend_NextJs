@@ -48,7 +48,6 @@ const PopupWidget = () => {
         if (json.success) {
           setIsSuccess(true);
           setMessage(json.message);
-          e.target.reset();
           reset();
         } else {
           setIsSuccess(false);
