@@ -221,7 +221,7 @@ const PopupWidget = () => {
                         </label>
 
                         <textarea
-                          rows="4"
+                          rows={4}
                           id="message"
                           {...register("message", {
                             required: "Escreva Sua Mensagem",
