@@ -58,7 +58,7 @@ export default function LoginForm() {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        dataSlot="icon"
+                        // dataSlot="icon"
                         className="w-4 h-4 text-black absolute left-3 top-1/2 transform -translate-y-1/2"
                       >
                         <path
