@@ -69,12 +69,8 @@ function App() {
     const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      if (
-        canvasRef.current &&
-        canvasRef.current.current &&
-        typeof canvasRef.current.current === "object"
-      ) {
-        const { current: chartInstance } = canvasRef.current;
+      if (canvasRef.current && canvasRef.current.current) {
+        const chartInstance = canvasRef.current.current;
         if (chartInstance) {
           chartInstance.destroy(); // Check if destroy method exists on Chart object
         }
@@ -96,12 +92,8 @@ function App() {
     const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      if (
-        canvasRef.current &&
-        canvasRef.current.current &&
-        typeof canvasRef.current.current === "object"
-      ) {
-        const { current: chartInstance } = canvasRef.current;
+      if (canvasRef.current && canvasRef.current.current) {
+        const chartInstance = canvasRef.current.current;
         if (chartInstance) {
           chartInstance.destroy(); // Check if destroy method exists on Chart object
         }
