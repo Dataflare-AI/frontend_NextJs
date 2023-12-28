@@ -4,6 +4,7 @@ import Image from "next/image";
 import { openSans } from "@/app/ui/fonts";
 import { useFormState, useFormStatus } from "react-dom";
 import { authenticate } from "@/app/lib/actions";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
@@ -100,9 +101,11 @@ export default function LoginForm() {
                     </svg>
                   </div>
                 </div>
-                <button className="hover:bg-white hover:border-black hover:text-black hover:transition-colors mt-6 w-40 rounded-md bg-black py-2 text-white border border-transparent transition-border">
-                  Entrar
-                </button>
+                <Link href="/dashboard">
+                  <button className="hover:bg-white hover:border-black hover:text-black hover:transition-colors mt-6 w-40 rounded-md bg-black py-2 text-white border border-transparent transition-border">
+                    Entrar
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
