@@ -10,7 +10,7 @@ interface BenefitProps {
 
 interface BenefitsProps {
   data: {
-    image: string | StaticImageData;
+    image: string | { src: string; alt: string };
     imgPos: string;
     title: string;
     desc: string;
