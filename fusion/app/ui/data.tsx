@@ -13,7 +13,7 @@ import benefitTwoImg from "/public/benefit-two.png";
 const benefitOne = {
   title: "Análise Abrangente de Dados",
   desc: "Utilize análises avançadas para obter insights profundos em seus dados, descobrindo padrões e tendências valiosos.",
-  image: benefitOneImg,
+  image: benefitOneImg.src,
   imgPos: "left",
   bullets: [
     {
@@ -37,7 +37,7 @@ const benefitOne = {
 const benefitTwo = {
   title: "Aprimoramento de Insights",
   desc: "Eleve seus insights de dados a novos patamares, descobrindo oportunidades ocultas e otimizando seu processo de tomada de decisão.",
-  image: benefitTwoImg,
+  image: benefitTwoImg.src,
   imgPos: "right",
   bullets: [
     {
