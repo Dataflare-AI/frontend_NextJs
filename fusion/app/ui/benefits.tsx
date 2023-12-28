@@ -28,13 +28,15 @@ const Benefits: React.FC<BenefitsProps> = ({ data }) => {
       >
         <div>
           <Image
-            src={data.image.src || data.image}
+            src={typeof data.image === "string" ? data.image : data.image.src}
             width="521"
             height={10}
             alt="Benefits"
             className={"object-cover"}
             placeholder="blur"
-            blurDataURL={data.image.src}
+            blurDataURL={
+              typeof data.image === "string" ? data.image : data.image.src
+            }
           />
         </div>
       </div>
