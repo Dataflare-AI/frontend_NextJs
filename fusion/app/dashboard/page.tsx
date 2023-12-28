@@ -5,9 +5,23 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
+// Define a type for the bar chart data
+interface BarChartData {
+  labels: string[];
+  datasets: {
+    label: string;
+    backgroundColor: string;
+    borderColor: string;
+    borderWidth: number;
+    hoverBackgroundColor: string;
+    hoverBorderColor: string;
+    data: number[];
+  }[];
+}
+
 function App() {
   // Dados fictícios para o gráfico de barras
-  const barChartData = {
+  const barChartData: BarChartData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May"],
     datasets: [
       {
@@ -38,7 +52,10 @@ function App() {
   const pieChartRef = useRef(null);
 
   // Função para criar/gráfico de barras
-  const createBarChart = (chartData, canvasRef) => {
+  const createBarChart = (
+    chartData: BarChartData,
+    canvasRef: React.RefObject<HTMLCanvasElement>
+  ) => {
     const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
