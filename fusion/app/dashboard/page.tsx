@@ -3,7 +3,7 @@
 import { FaUpload, FaTable, FaComments } from "react-icons/fa";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
+import { Chart, ChartItem } from "chart.js/auto"; // Make sure to import Chart and ChartItem from the correct module
 
 // Define a type for the bar chart data
 interface BarChartData {
@@ -58,14 +58,16 @@ function App() {
   ) => {
     const canvas = canvasRef.current;
     if (canvas) {
-      const ctx = canvas.getContext("2d");
-      if (barChartRef.current) {
-        barChartRef.current.destroy();
+      const ctx: CanvasRenderingContext2D | null = canvas.getContext("2d");
+      if (ctx) {
+        if (barChartRef.current) {
+          barChartRef.current.destroy();
+        }
+        barChartRef.current = new Chart(ctx, {
+          type: "bar",
+          data: chartData,
+        });
       }
-      barChartRef.current = new Chart(ctx, {
-        type: "bar",
-        data: chartData,
-      });
     }
   };
   // Função para criar/gráfico de pizza
