@@ -1,8 +1,24 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 import Container from "./container";
 
-const Benefits = ({ data }) => {
+interface BenefitProps {
+  title: string;
+  icon: React.ReactElement;
+  desc: string;
+}
+
+interface BenefitsProps {
+  data: {
+    image: string;
+    imgPos: string;
+    title: string;
+    desc: string;
+    bullets: BenefitProps[];
+  };
+}
+
+const Benefits: React.FC<BenefitsProps> = ({ data }) => {
   return (
     <Container className="flex flex-wrap mb-20 lg:gap-10 lg:flex-nowrap">
       <div
@@ -50,7 +66,7 @@ const Benefits = ({ data }) => {
   );
 };
 
-function Benefit({ title, icon, desc }) {
+function Benefit({ title, icon, desc }: BenefitProps) {
   return (
     <div className="flex items-start mt-8 space-x-3">
       <div className="flex items-center justify-center flex-shrink-0 mt-1 bg-gray-500 rounded-md w-11 h-11 ">
