@@ -11,7 +11,7 @@ export default function LoginForm() {
   return (
     <form action={dispatch}>
       <div className="flex flex-col md:flex-row h-screen">
-        <div className="flex items-center justify-center w-full md:w-1/3 h-full relative md:ml-32 lg:bg-gray-700">
+        <div className="flex items-center justify-center w-full md:w-1/3 h-full relative md:ml-32 lg:bg-white">
           <Image
             src="/loginMobile.jpeg"
             alt="Login Image"

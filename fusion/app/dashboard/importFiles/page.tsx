@@ -66,6 +66,7 @@ function App() {
       window.scrollTo(dropdownScrollOptions);
     }
   };
+
   return (
     <div className="wrapper p-8 bg-white">
       <h3 className="text-3xl font-bold mb-6">
@@ -73,18 +74,20 @@ function App() {
       </h3>
 
       <form className="form-group custom-form" onSubmit={handleFileSubmit}>
-        <input
-          type="file"
-          className="form-control border rounded p-2"
-          required
-          onChange={handleFile}
-        />
-        <button
-          type="submit"
-          className="px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md md:ml-5 w-40 text-center"
-        >
-          IMPORTAR
-        </button>
+        <div className="flex flex-col md:flex-row items-stretch">
+          <input
+            type="file"
+            className="form-control border rounded p-2 flex-grow mb-2 md:mb-0 md:mr-2"
+            required
+            onChange={handleFile}
+          />
+          <button
+            type="submit"
+            className="px-6 py-2 hover:bg-white hover:border-black hover:text-black hover:transition-colors bg-black text-white border border-transparent transition-border rounded-md md:w-40 md:flex-shrink-0 text-center"
+          >
+            IMPORTAR
+          </button>
+        </div>
         {typeError && (
           <div className="alert alert-danger mt-2" role="alert">
             {typeError}
@@ -102,7 +105,7 @@ function App() {
             name="column"
             onChange={handleColumnSelect}
             value={selectedColumn || ""}
-            className="border rounded p-2 max-w-xs"
+            className="border rounded p-2 max-w-full"
           >
             {Object.keys(excelData[0]).map((key) => (
               <option key={key} value={key}>
@@ -151,7 +154,7 @@ function App() {
           />
           <button
             type="button"
-            className="hover:bg-black hover:border-black hover:text-white bg-white text-black border border-black transition-all rounded-md md:ml-0 text-center px-4 py-2 "
+            className="hover:bg-black hover:border-black hover:text-white bg-white text-black border border-black transition-all rounded-md text-center px-4 py-2"
             onClick={sendMessageToOpenAI}
           >
             Enviar Mensagem
