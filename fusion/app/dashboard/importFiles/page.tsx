@@ -123,7 +123,9 @@ function App() {
                   {excelData.map((individualExcelData, index) => (
                     <tr key={index}>
                       <td className="border p-2">
-                        {individualExcelData[selectedColumn]}
+                        {selectedColumn !== null
+                          ? individualExcelData[selectedColumn]
+                          : ""}
                       </td>
                     </tr>
                   ))}
