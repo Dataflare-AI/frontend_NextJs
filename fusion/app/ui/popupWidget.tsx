@@ -30,35 +30,31 @@ const PopupWidget = () => {
 
   const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
 
-  const onSubmit = async (
-    data: FormData,
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log(data);
-    await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(data, null, 2),
-    })
-      .then(async (response) => {
-        let json = await response.json();
-        if (json.success) {
-          setIsSuccess(true);
-          setMessage(json.message);
-          reset();
-        } else {
-          setIsSuccess(false);
-          setMessage(json.message);
-        }
-      })
-      .catch((error) => {
-        setIsSuccess(false);
-        setMessage("Client Error. Please check the console.log for more info");
-        console.log(error);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data, null, 2),
       });
+      const json = await response.json();
+      if (json.success) {
+        setIsSuccess(true);
+        setMessage(json.message);
+        reset(); // Use reset directly
+      } else {
+        setIsSuccess(false);
+        setMessage(json.message);
+      }
+    } catch (error) {
+      setIsSuccess(false);
+      setMessage("Client Error. Please check the console.log for more info");
+      console.log(error);
+    }
   };
 
   return (
