@@ -87,9 +87,9 @@ function App() {
   ) => {
     const canvas = canvasRef.current;
     if (canvas) {
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext("2d")!;
       if (pieChartRef.current) {
-        (pieChartRef.current as Chart<"doughnut", number[], string>).destroy();
+        pieChartRef.current.destroy();
       }
       pieChartRef.current = new Chart(ctx, {
         type: "doughnut",
