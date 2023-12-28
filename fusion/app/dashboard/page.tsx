@@ -1,119 +1,9 @@
 "use client";
 
 import { FaUpload, FaTable, FaComments } from "react-icons/fa";
-import { MutableRefObject, RefObject } from "react";
-import { Chart, ChartConfiguration } from "chart.js/auto";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-
-// Define a type for the bar chart data
-interface BarChartData {
-  labels: string[];
-  datasets: {
-    label: string;
-    backgroundColor: string;
-    borderColor: string;
-    borderWidth: number;
-    hoverBackgroundColor: string;
-    hoverBorderColor: string;
-    data: number[];
-  }[];
-}
-
-interface PieChartData {
-  labels: string[];
-  datasets: {
-    data: number[];
-    backgroundColor: string[];
-    hoverBackgroundColor: string[];
-  }[];
-}
-
-interface ChartInstance extends Chart {
-  destroy: () => void;
-}
 
 function App() {
-  // Dados fictícios para o gráfico de barras
-  const barChartData: BarChartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May"],
-    datasets: [
-      {
-        label: "Número de Projetos",
-        backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "rgba(75,192,192,1)",
-        borderWidth: 1,
-        hoverBackgroundColor: "rgba(75,192,192,0.4)",
-        hoverBorderColor: "rgba(75,192,192,1)",
-        data: [15, 22, 18, 25, 20],
-      },
-    ],
-  };
-
-  // Dados fictícios para o gráfico de pizza
-  const pieChartData: PieChartData = {
-    labels: ["Machine Learning", "Data Visualization", "Data Analysis"],
-    datasets: [
-      {
-        data: [40, 30, 30],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-      },
-    ],
-  };
-
-  const barChartRef = useRef<RefObject<ChartInstance> | null>(null);
-  const pieChartRef = useRef<RefObject<ChartInstance> | null>(null);
-
-  const createBarChart = (
-    chartData: BarChartData,
-    canvasRef: MutableRefObject<RefObject<ChartInstance> | null>
-  ) => {
-    const canvas = canvasRef.current?.current; // Access the current property of the RefObject
-    if (canvas) {
-      const ctx = canvas.getContext("2d")!;
-      if (canvasRef.current && canvasRef.current.current) {
-        const chartInstance = canvasRef.current.current;
-        if (chartInstance) {
-          chartInstance.destroy(); // Check if destroy method exists on Chart object
-        }
-      }
-      canvasRef.current = canvasRef.current || {};
-      const chart = new Chart(ctx, {
-        type: "bar",
-        data: chartData,
-      });
-      canvasRef.current.current = chart as ChartInstance; // Save the Chart instance to the RefObject
-    }
-  };
-
-  const createPieChart = (
-    chartData: PieChartData,
-    canvasRef: MutableRefObject<RefObject<ChartInstance> | null>
-  ) => {
-    const canvas = canvasRef.current?.current; // Access the current property of the RefObject
-    if (canvas) {
-      const ctx = canvas.getContext("2d")!;
-      if (canvasRef.current && canvasRef.current.current) {
-        const chartInstance = canvasRef.current.current;
-        if (chartInstance) {
-          chartInstance.destroy(); // Check if destroy method exists on Chart object
-        }
-      }
-      canvasRef.current = canvasRef.current || {};
-      const chart = new Chart(ctx, {
-        type: "doughnut",
-        data: chartData,
-      });
-      canvasRef.current.current = chart as ChartInstance; // Save the Chart instance to the RefObject
-    }
-  };
-
-  useEffect(() => {
-    createBarChart(barChartData, barChartRef);
-    createPieChart(pieChartData, pieChartRef);
-  }, []);
-
   return (
     <div className="wrapper p-8 bg-white">
       <h3 className="text-3xl font-bold mb-6 text-gray-800">
@@ -158,11 +48,11 @@ function App() {
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="p-4 bg-gray-200 rounded-md">
-          <canvas id="barChartCanvas" width="400" height="200"></canvas>
+          {/* Placeholder for future chart */}
         </div>
 
         <div className="p-4 bg-gray-200 rounded-md">
-          <canvas id="pieChartCanvas" width="400" height="200"></canvas>
+          {/* Placeholder for future chart */}
         </div>
 
         <div className="p-4 bg-gray-200 rounded-md">
