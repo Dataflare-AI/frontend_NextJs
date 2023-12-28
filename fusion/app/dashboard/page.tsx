@@ -60,7 +60,7 @@ function App() {
 
   const barChartRef = useRef<RefObject<HTMLCanvasElement> | null>(null);
   const pieChartRef = useRef<RefObject<HTMLCanvasElement> | null>(null);
-  
+
   // Função para criar/gráfico de barras
   const createBarChart = (
     chartData: BarChartData,
@@ -72,6 +72,7 @@ function App() {
       if (
         canvasRef.current &&
         canvasRef.current.current &&
+        typeof canvasRef.current.current === "object" &&
         "chartInstance" in canvasRef.current.current
       ) {
         canvasRef.current.current.chartInstance?.destroy(); // Check if destroy method exists on Chart instance
@@ -96,6 +97,7 @@ function App() {
       if (
         canvasRef.current &&
         canvasRef.current.current &&
+        typeof canvasRef.current.current === "object" &&
         "chartInstance" in canvasRef.current.current
       ) {
         canvasRef.current.current.chartInstance?.destroy(); // Check if destroy method exists on Chart instance
