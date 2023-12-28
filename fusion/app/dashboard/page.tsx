@@ -65,7 +65,6 @@ function App() {
   const barChartRef = useRef<RefObject<ChartInstance> | null>(null);
   const pieChartRef = useRef<RefObject<ChartInstance> | null>(null);
 
-  // Função para criar/gráfico de barras
   const createBarChart = (
     chartData: BarChartData,
     canvasRef: MutableRefObject<RefObject<ChartInstance> | null>
@@ -88,7 +87,6 @@ function App() {
     }
   };
 
-  // Função para criar/gráfico de pizza
   const createPieChart = (
     chartData: PieChartData,
     canvasRef: MutableRefObject<RefObject<ChartInstance> | null>
