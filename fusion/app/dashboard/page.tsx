@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="wrapper p-8 bg-white">
       <h3 className="text-3xl font-bold mb-6 text-gray-800">
-        Dashboard de Análise de Dados em Python
+        Dashboard de Análise de Dados
       </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
