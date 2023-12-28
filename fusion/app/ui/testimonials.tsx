@@ -70,7 +70,6 @@ function AvaliacaoAvatar(props: AvaliacaoAvatarProps) {
           width="40"
           height="40"
           alt="Avatar"
-          placeholder="blur"
         />
       </div>
       <div>
