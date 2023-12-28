@@ -2,9 +2,9 @@
 
 import { FaUpload, FaTable, FaComments } from "react-icons/fa";
 import { MutableRefObject, RefObject } from "react";
+import { Chart, ChartConfiguration } from "chart.js/auto";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { Chart, ChartItem } from "chart.js/auto"; // Make sure to import Chart and ChartItem from the correct module
 
 // Define a type for the bar chart data
 interface BarChartData {
@@ -27,6 +27,10 @@ interface PieChartData {
     backgroundColor: string[];
     hoverBackgroundColor: string[];
   }[];
+}
+
+interface ChartInstance extends Chart {
+  destroy: () => void;
 }
 
 function App() {
@@ -58,13 +62,13 @@ function App() {
     ],
   };
 
-  const barChartRef = useRef<RefObject<HTMLCanvasElement> | null>(null);
-  const pieChartRef = useRef<RefObject<HTMLCanvasElement> | null>(null);
+  const barChartRef = useRef<RefObject<ChartInstance> | null>(null);
+  const pieChartRef = useRef<RefObject<ChartInstance> | null>(null);
 
   // Função para criar/gráfico de barras
   const createBarChart = (
     chartData: BarChartData,
-    canvasRef: MutableRefObject<RefObject<HTMLCanvasElement> | null>
+    canvasRef: MutableRefObject<RefObject<ChartInstance> | null>
   ) => {
     const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
@@ -80,14 +84,14 @@ function App() {
         type: "bar",
         data: chartData,
       });
-      canvasRef.current.current = chart; // Save the Chart instance to the RefObject
+      canvasRef.current.current = chart as ChartInstance; // Save the Chart instance to the RefObject
     }
   };
 
   // Função para criar/gráfico de pizza
   const createPieChart = (
     chartData: PieChartData,
-    canvasRef: MutableRefObject<RefObject<HTMLCanvasElement> | null>
+    canvasRef: MutableRefObject<RefObject<ChartInstance> | null>
   ) => {
     const canvas = canvasRef.current?.current; // Access the current property of the RefObject
     if (canvas) {
@@ -103,7 +107,7 @@ function App() {
         type: "doughnut",
         data: chartData,
       });
-      canvasRef.current.current = chart; // Save the Chart instance to the RefObject
+      canvasRef.current.current = chart as ChartInstance; // Save the Chart instance to the RefObject
     }
   };
 
