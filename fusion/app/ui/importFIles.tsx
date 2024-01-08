@@ -1,57 +1,93 @@
 "use client";
 
-import { useState, ChangeEvent, FormEvent } from "react";
+// ImportFiles.tsx
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import * as XLSX from "xlsx";
+import Loading from "./Loading";
 
 function ImportFiles() {
   const [excelFile, setExcelFile] = useState<ArrayBuffer | null>(null);
   const [typeError, setTypeError] = useState<string | null>(null);
-  const [excelData, setExcelData] = useState<any[] | null>(null); // You might want to replace 'any' with a more specific type
+  const [excelData, setExcelData] = useState<any[] | null>(null);
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
   const [chatPrompt, setChatPrompt] = useState<string>("");
+  const [isLoadingFile, setIsLoadingFile] = useState<boolean>(false);
+  const [isLoadingSubmit, setIsLoadingSubmit] = useState<boolean>(false);
+  const [isLoadingMessage, setIsLoadingMessage] = useState<boolean>(false);
 
-  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
-    let fileTypes = [
-      "application/vnd.ms-excel",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "text/csv",
-    ];
-    let selectedFile = e.target.files?.[0];
+  const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
+    setIsLoadingFile(true);
 
-    if (selectedFile) {
-      if (selectedFile && fileTypes.includes(selectedFile.type)) {
-        setTypeError(null);
-        let reader = new FileReader();
-        reader.readAsArrayBuffer(selectedFile);
-        reader.onload = (e) => {
-          setExcelFile(e?.target?.result as ArrayBuffer);
-        };
+    try {
+      let fileTypes = [
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "text/csv",
+      ];
+      let selectedFile = e.target.files?.[0];
+
+      if (selectedFile) {
+        if (selectedFile && fileTypes.includes(selectedFile.type)) {
+          setTypeError(null);
+          let reader = new FileReader();
+          reader.readAsArrayBuffer(selectedFile);
+
+          reader.onload = (e) => {
+            setExcelFile(e?.target?.result as ArrayBuffer);
+          };
+        } else {
+          setTypeError("Por favor, selecione apenas arquivos do tipo Excel");
+          setExcelFile(null);
+        }
       } else {
-        setTypeError("Por favor, selecione apenas arquivos do tipo Excel");
-        setExcelFile(null);
+        console.log("Por favor, selecione seu arquivo");
       }
-    } else {
-      console.log("Por favor, selecione seu arquivo");
+    } catch (error) {
+      console.error("Erro durante o processamento do arquivo:", error);
+      setTypeError("Erro durante o processamento do arquivo");
+      setExcelFile(null);
+    } finally {
+      setIsLoadingFile(false);
     }
   };
 
-  const handleFileSubmit = (e: FormEvent) => {
+  const handleFileSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (excelFile !== null) {
-      const workbook = XLSX.read(excelFile, { type: "buffer" });
-      const worksheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[worksheetName];
-      const data = XLSX.utils.sheet_to_json(worksheet);
-      setExcelData(data.slice(0, 10));
+    setIsLoadingSubmit(true);
+
+    try {
+      if (excelFile !== null) {
+        const workbook = XLSX.read(excelFile, { type: "buffer" });
+        const worksheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[worksheetName];
+        const data = XLSX.utils.sheet_to_json(worksheet);
+        setExcelData(data.slice(0, 10));
+      }
+    } catch (error) {
+      console.error("Erro durante o envio do arquivo:", error);
+      // Trate o erro conforme necessário
+    } finally {
+      setIsLoadingSubmit(false);
     }
   };
 
-  const sendMessageToOpenAI = () => {
-    // Implemente a lógica para enviar a mensagem para a API da OpenAI
-    // e receber a resposta do ChatGPT aqui
-    console.log(`Mensagem enviada para a OpenAI: ${chatPrompt}`);
-    // A resposta do ChatGPT será tratada aqui
-    // (quando a integração com a API da OpenAI estiver pronta)
+  const sendMessageToOpenAI = async () => {
+    setIsLoadingMessage(true);
+
+    try {
+      // Implemente a lógica para enviar a mensagem para a API da OpenAI
+      // e receber a resposta do ChatGPT aqui
+
+      console.log(`Mensagem enviada para a OpenAI: ${chatPrompt}`);
+
+      // A resposta do ChatGPT será tratada aqui
+      // (quando a integração com a API da OpenAI estiver pronta)
+    } catch (error) {
+      console.error("Erro durante o envio da mensagem:", error);
+      // Trate o erro conforme necessário
+    } finally {
+      setIsLoadingMessage(false);
+    }
   };
 
   const handleColumnSelect = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -95,6 +131,7 @@ function ImportFiles() {
         )}
       </form>
 
+      {isLoadingFile && <Loading text="Carregando o arquivo..." />}
       {excelData && (
         <div className="mt-4">
           <label htmlFor="columnDropdown" className="text-lg">
@@ -161,6 +198,9 @@ function ImportFiles() {
           </button>
         </div>
       )}
+
+      {isLoadingSubmit && <Loading text="Enviando arquivo..." />}
+      {isLoadingMessage && <Loading text="Enviando mensagem..." />}
     </div>
   );
 }
