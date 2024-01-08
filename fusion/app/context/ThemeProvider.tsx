@@ -1,13 +1,17 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, ReactNode } from "react";
 
 import data from "@/data.json";
 
 const THEME_KEY = "theme";
 export const ThemeContext = React.createContext({});
 
-export const ThemeProvider = ({ children }): { children: React.ReactNode } => {
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [customTheme, setCustomTheme] = React.useState(() => {
     if (typeof window !== "undefined") {
       const theme = localStorage.getItem(THEME_KEY);
@@ -37,7 +41,7 @@ export const ThemeProvider = ({ children }): { children: React.ReactNode } => {
     });
   }, [customTheme]);
 
-  function mockDataFecth() {
+  function mockDataFetch() {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(data);
@@ -46,7 +50,7 @@ export const ThemeProvider = ({ children }): { children: React.ReactNode } => {
   }
 
   useEffect(() => {
-    mockDataFecth().then((theme) => {
+    mockDataFetch().then((theme) => {
       updateTheme(theme as { primary: string });
     });
   }, []);
