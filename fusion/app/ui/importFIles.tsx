@@ -188,7 +188,7 @@ function ImportFiles() {
                   fill="#000000"
                 />
               </svg>
-              LOADING...
+              IMPORTANDO...
             </button>
           ) : (
             <button
