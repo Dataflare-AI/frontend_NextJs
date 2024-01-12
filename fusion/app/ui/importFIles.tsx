@@ -4,6 +4,8 @@
 import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 
+type ExcelDataItem = Record<string, any>; // Ajuste o tipo conforme necessário
+
 const LoadingModal: React.FC<{ visible: boolean }> = ({ visible }) => {
   if (!visible) {
     return null;
@@ -123,11 +125,13 @@ function ImportFiles() {
       try {
         const workbook = XLSX.read(excelFile, { type: "buffer" });
         const selectedWorksheet = workbook.Sheets[sheetName];
-        const data = XLSX.utils.sheet_to_json(selectedWorksheet);
+        const data: ExcelDataItem[] =
+          XLSX.utils.sheet_to_json(selectedWorksheet);
         const columns = Object.keys(data[0]);
-        setSelectedColumn(columns[0]); // Você pode definir uma coluna padrão, se necessário
+
+        setSelectedColumn(columns[0]);
         setSelectedSheetData(data);
-        setAreColumnsLoaded(true); // Indica que as colunas estão carregadas
+        setAreColumnsLoaded(true);
       } catch (error) {
         console.error("Erro durante o processamento das colunas:", error);
       } finally {
