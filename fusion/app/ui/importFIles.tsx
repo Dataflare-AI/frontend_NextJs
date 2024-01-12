@@ -43,7 +43,9 @@ function ImportFiles() {
       }
     };
 
-    fetchData();
+    if (selectedSheet !== null) {
+      fetchData();
+    }
   }, [selectedSheet]);
 
   const processarArquivo = async () => {
@@ -114,8 +116,8 @@ function ImportFiles() {
     updateColumnsForSheet(selectedSheetName);
   };
 
-  const updateColumnsForSheet = async (sheetName: string) => {
-    if (excelFile !== null) {
+  const updateColumnsForSheet = async (sheetName: string | null) => {
+    if (excelFile !== null && sheetName !== null) {
       setIsSheetLoading(true); // Inicia o carregamento das colunas da nova folha
 
       try {
