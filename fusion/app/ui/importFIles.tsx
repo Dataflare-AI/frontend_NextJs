@@ -1,8 +1,20 @@
 "use client";
 
 // ImportFiles.tsx
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import * as XLSX from "xlsx";
+
+const LoadingModal: React.FC<{ visible: boolean }> = ({ visible }) => {
+  if (!visible) {
+    return null;
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-200"></div>
+    </div>
+  );
+};
 
 // Defina o componente
 function ImportFiles() {
@@ -12,6 +24,55 @@ function ImportFiles() {
   const [selectedColumn, setSelectedColumn] = useState<string | null>(null);
   const [chatPrompt, setChatPrompt] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedSheet, setSelectedSheet] = useState<string | null>(null);
+  const [sheetsList, setSheetsList] = useState<string[]>([]);
+  const [selectedSheetData, setSelectedSheetData] = useState<any[] | null>(
+    null
+  );
+  const [isSheetLoading, setIsSheetLoading] = useState<boolean>(false);
+  const [areColumnsLoaded, setAreColumnsLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsSheetLoading(true); // Inicia o carregamento da folha de cálculo
+
+      try {
+        await processarArquivo();
+      } finally {
+        setIsSheetLoading(false); // Finaliza o carregamento da folha de cálculo
+      }
+    };
+
+    fetchData();
+  }, [selectedSheet]);
+
+  const processarArquivo = async () => {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        try {
+          if (excelFile !== null) {
+            const workbook = XLSX.read(excelFile, { type: "buffer" });
+            const sheetNames = workbook.SheetNames;
+            setSheetsList(sheetNames);
+
+            // Atualiza a folha (sheet) selecionada
+            const selectedWorksheet =
+              workbook.Sheets[selectedSheet || sheetNames[0]];
+            const data = XLSX.utils.sheet_to_json(selectedWorksheet);
+
+            setExcelData(data.slice(0, 10)); // Atualiza a visualização com os primeiros 10 itens
+            setSelectedSheetData(data);
+            setAreColumnsLoaded(false); // Reseta o estado quando a folha é trocada
+            updateColumnsForSheet(selectedSheet);
+          }
+        } catch (error) {
+          console.error("Erro durante o processamento do arquivo:", error);
+        } finally {
+          resolve();
+        }
+      }, 3000);
+    });
+  };
 
   // Lógica para manipular a seleção de arquivo
   const handleFile = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,28 +107,33 @@ function ImportFiles() {
     }
   };
 
-  // Lógica para processar o arquivo e atualizar os dados
-  const processarArquivo = async () => {
-    return new Promise<void>((resolve) => {
-      // Simula o processamento do arquivo durante 3000ms (3 segundos)
-      setTimeout(() => {
-        try {
-          if (excelFile !== null) {
-            const workbook = XLSX.read(excelFile, { type: "buffer" });
-            const worksheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[worksheetName];
-            const data = XLSX.utils.sheet_to_json(worksheet);
-            setExcelData(data.slice(0, 10));
-            resolve();
-          }
-        } catch (error) {
-          console.error("Erro durante o processamento do arquivo:", error);
-        }
-      }, 3000);
-    });
+  const handleSheetSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    const selectedSheetName = e.target.value;
+    setSelectedSheet(selectedSheetName);
+    setAreColumnsLoaded(false); // Reseta o estado quando a folha é trocada
+    updateColumnsForSheet(selectedSheetName);
   };
 
-  // Lógica para manipular o envio do formulário
+  const updateColumnsForSheet = async (sheetName: string) => {
+    if (excelFile !== null) {
+      setIsSheetLoading(true); // Inicia o carregamento das colunas da nova folha
+
+      try {
+        const workbook = XLSX.read(excelFile, { type: "buffer" });
+        const selectedWorksheet = workbook.Sheets[sheetName];
+        const data = XLSX.utils.sheet_to_json(selectedWorksheet);
+        const columns = Object.keys(data[0]);
+        setSelectedColumn(columns[0]); // Você pode definir uma coluna padrão, se necessário
+        setSelectedSheetData(data);
+        setAreColumnsLoaded(true); // Indica que as colunas estão carregadas
+      } catch (error) {
+        console.error("Erro durante o processamento das colunas:", error);
+      } finally {
+        setIsSheetLoading(false); // Finaliza o carregamento das colunas
+      }
+    }
+  };
+
   const handleFileSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -150,7 +216,6 @@ function ImportFiles() {
     }
   };
 
-  // Renderização do componente
   return (
     <div className="wrapper p-8 bg-white">
       <h3 className="text-3xl font-bold mb-6">
@@ -208,24 +273,50 @@ function ImportFiles() {
         )}
       </form>
 
+      <LoadingModal
+        visible={(isLoading || isSheetLoading) && selectedSheet !== null}
+      />
+
       {excelData && (
         <div className="mt-4">
-          <label htmlFor="columnDropdown" className="text-lg">
-            Selecione uma coluna:
+          <label htmlFor="sheetDropdown" className="text-lg">
+            Selecione uma página:
           </label>
           <select
-            id="columnDropdown"
-            name="column"
-            onChange={handleColumnSelect}
-            value={selectedColumn || ""}
+            id="sheetDropdown"
+            name="sheet"
+            onChange={handleSheetSelect}
+            value={selectedSheet || ""}
             className="border rounded p-2 max-w-full"
           >
-            {Object.keys(excelData[0]).map((key) => (
-              <option key={key} value={key}>
-                {key}
+            {sheetsList.map((sheet) => (
+              <option key={sheet} value={sheet}>
+                {sheet}
               </option>
             ))}
           </select>
+
+          {/* Dropdown de Seleção de Coluna */}
+          {selectedSheetData && (
+            <div className="mt-4">
+              <label htmlFor="columnDropdown" className="text-lg">
+                Selecione uma coluna:
+              </label>
+              <select
+                id="columnDropdown"
+                name="column"
+                onChange={(e) => setSelectedColumn(e.target.value)}
+                value={selectedColumn || ""}
+                className="border rounded p-2 max-w-full"
+              >
+                {Object.keys(selectedSheetData[0]).map((key) => (
+                  <option key={key} value={key}>
+                    {key}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div className="viewer mt-4 overflow-x-auto">
             <div className="table-responsive">

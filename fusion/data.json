@@ -1,16 +1,3 @@
 {
-    "theme": "default",
-    "dark": false,
-    "color": "blue",
-    "colorMode": "dark",
-    "accent": "teal",
-    "accentColor": "blue",
-    "accentColorMode": "dark",
-    "colors": {
-        "primary": "blue",
-        "secondary": "red",
-        "tertiary": "green",
-        "quaternary": "purple",
-        "quinary": "pink"
-    }
+    "primary": "blue"
 }

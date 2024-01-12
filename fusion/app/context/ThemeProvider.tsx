@@ -25,6 +25,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   function updateTheme(theme: { primary: string }) {
     setCustomTheme({
       primary: theme.primary,
+      // secondary: theme.secondary,
     });
   }
 

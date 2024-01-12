@@ -8,7 +8,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="wrapper p-8 bg-white ">
-        <h3 className="text-3xl font-bold mb-6 text-gray-800">
+        <h3 className="text-3xl font-bold mb-6 text-secondary">
           Dashboard de Análise de Dados
         </h3>
 
