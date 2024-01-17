@@ -1,17 +1,17 @@
 import React from "react";
-import Navbar from "./ui/navbar";
-import Hero from "./ui/hero";
-import SectionTitle from "./ui/sectionTitle";
-import Benefits from "./ui/benefits";
-import Video from "./ui/video";
-import Testimonials from "./ui/testimonials";
-import Faq from "./ui/faq";
-import Cta from "./ui/cta";
-import Footer from "./ui/footer";
-import PopupWidget from "./ui/popupWidget";
-import { benefitTwo, benefitOne } from "./ui/data";
+import Navbar from "./ui/home/navbar";
+import Hero from "./ui/home/hero";
+import SectionTitle from "./ui/home/sectionTitle";
+import Benefits from "./ui/home/benefits";
+import Video from "./ui/home/video";
+import Testimonials from "./ui/home/testimonials";
+import Faq from "./ui/home/faq";
+import Cta from "./ui/home/cta";
+import Footer from "./ui/home/footer";
+import PopupWidget from "./ui/home/popupWidget";
+import { benefitTwo, benefitOne } from "./ui/home/data";
 
-import "./ui/global.css";
+import "./ui/globals.css";
 
 export default function Home() {
   return (

@@ -1,4 +1,4 @@
-import LoginForm from "@/app/ui/login-form";
+import LoginForm from "@/app/ui/login/login-form";
 import { ThemeProvider } from "@/app/context/ThemeProvider";
 
 export default function LoginPage() {

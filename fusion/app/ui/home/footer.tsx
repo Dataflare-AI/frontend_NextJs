@@ -29,8 +29,9 @@ export default function Footer() {
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
               Potencialize suas análises de dados com a FusionAPI, a ferramenta
-              essencial para profissionais que buscam insights
-              valiosos, é a solução que você precisa para elevar o nível da sua análise de dados.
+              essencial para profissionais que buscam insights valiosos, é a
+              solução que você precisa para elevar o nível da sua análise de
+              dados.
             </div>
           </div>
 
@@ -63,19 +64,11 @@ export default function Footer() {
           <div className="">
             <div>Siga-nos</div>
             <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
-              <a
-                href="/"
-                target="_blank"
-                rel="noopener"
-              >
+              <a href="/" target="_blank" rel="noopener">
                 <span className="sr-only">Twitter</span>
                 <Twitter />
               </a>
-              <a
-                href="/"
-                target="_blank"
-                rel="noopener"
-              >
+              <a href="/" target="_blank" rel="noopener">
                 <span className="sr-only">Instagram</span>
                 <Instagram />
               </a>
