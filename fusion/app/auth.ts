@@ -50,14 +50,14 @@ export const { signIn, signOut, auth } = NextAuth({
       isNewUser,
     }: {
       token: any;
-      user: User | AdapterUser | null;
+      user: typeof User | typeof AdapterUser | null;
       account: Account | null;
       profile?: Profile;
       isNewUser?: boolean;
     }) {
       if (user) {
         // Assert the type of user to resolve TypeScript error
-        const typedUser = user as User;
+        const typedUser = user as typeof User;
 
         token.username = typedUser.username;
         token.img = typedUser.img;
