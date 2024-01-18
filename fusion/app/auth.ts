@@ -42,14 +42,23 @@ export const { signIn, signOut, auth } = NextAuth({
   ],
   // ADD ADDITIONAL INFORMATION TO SESSION
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({
+      token,
+      user,
+    }: {
+      token: any;
+      user: User | AdapterUser | null;
+    }) {
       if (user) {
-        token.username = user.username;
-        token.img = user.img;
+        // Assert the type of user to resolve TypeScript error
+        const typedUser = user as User;
+
+        token.username = typedUser.username;
+        token.img = typedUser.img;
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: any; token: any }) {
       if (token) {
         session.user.username = token.username;
         session.user.img = token.img;
