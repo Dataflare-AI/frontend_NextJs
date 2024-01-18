@@ -4,9 +4,8 @@ import { authConfig } from "./authconfig";
 import { connectToDB } from "./lib/utils";
 import { User } from "./lib/models";
 import bcrypt from "bcrypt";
-import { Credentials } from "next-auth";
 
-const login = async (credentials: Credentials) => {
+const login = async (credentials: any) => {
   try {
     connectToDB();
     const user = await User.findOne({ username: credentials.username });
