@@ -50,7 +50,7 @@ export const { signIn, signOut, auth } = NextAuth({
       isNewUser,
     }: {
       token: any;
-      user: typeof User | typeof AdapterUser | null;
+      user: typeof User | AdapterUser | null;
       account: Account | null;
       profile?: Profile;
       isNewUser?: boolean;
