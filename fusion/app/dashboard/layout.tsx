@@ -1,14 +1,21 @@
-import SideNav from "@/app/ui/dashboard/sidenav";
+import Navbar from "../ui/dashboard/navbar/navbar";
+import Sidebar from "../ui/dashboard/sidebar/sidebar";
+import styles from "../ui/dashboard/dashboard.module.css";
+import Footer from "../ui/dashboard/footer/footer";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const Layout = ({ children }) => {
   return (
-    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden bg-white">
-      <div className="w-full flex-none md:w-64">
-        <SideNav />
+    <div className={styles.container}>
+      <div className={styles.menu}>
+        <Sidebar />
       </div>
-      <div className="flex-grow p-6 md:overflow-y-auto md:p-12 bg-white">
+      <div className={styles.content}>
+        <Navbar />
         {children}
+        <Footer />
       </div>
     </div>
   );
-}
+};
+
+export default Layout;

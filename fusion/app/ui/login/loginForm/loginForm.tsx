@@ -1,13 +1,16 @@
 "use client";
 
+import { authenticate } from "@/app/lib/actions";
+import { useFormState } from "react-dom";
 import Image from "next/image";
-import { openSans } from "@/app/ui/fonts";
-import { useFormState, useFormStatus } from "react-dom";
-import Link from "next/link";
 
-export default function LoginForm() {
+const LoginForm = () => {
+  // const [state, formAction] = useFormState(authenticate, undefined);
+
   return (
-    <form>
+    <form
+    // action={formAction}
+    >
       <div className="flex flex-col md:flex-row h-screen">
         <div className="flex items-center justify-center w-full md:w-1/3 h-full relative md:ml-32 lg:bg-white">
           <Image
@@ -38,15 +41,14 @@ export default function LoginForm() {
                     className="block text-xs font-medium text-gray-900"
                     htmlFor="email"
                   >
-                    Email
+                    Username
                   </label>
                   <div className="relative">
                     <input
                       className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                      id="email"
-                      type="email"
-                      name="email"
-                      placeholder="Insira seu endereço de e-mail"
+                      type="text"
+                      name="username"
+                      placeholder="Insira seu nome de usuário"
                       required
                     />
                     <svg
@@ -75,7 +77,6 @@ export default function LoginForm() {
                   <div className="relative">
                     <input
                       className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 pr-8 text-sm outline-2 placeholder:text-gray-500"
-                      id="password"
                       type="password"
                       name="password"
                       placeholder="Insira sua senha"
@@ -98,16 +99,17 @@ export default function LoginForm() {
                     </svg>
                   </div>
                 </div>
-                <Link href="/dashboard">
-                  <button className="hover:bg-white hover:border-black hover:text-black hover:transition-colors mt-6 w-40 rounded-md bg-black py-2 text-white border border-transparent transition-border">
-                    Entrar
-                  </button>
-                </Link>
+                <button className="hover:bg-white hover:border-black hover:text-black hover:transition-colors mt-6 w-40 rounded-md bg-black py-2 text-white border border-transparent transition-border">
+                  Entrar
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {/* {state && state} */}
     </form>
   );
-}
+};
+
+export default LoginForm;

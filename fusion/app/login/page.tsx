@@ -1,12 +1,11 @@
-import LoginForm from "@/app/ui/login/login-form";
-import { ThemeProvider } from "@/app/context/ThemeProvider";
+import LoginForm from "../ui/login/loginForm/loginForm";
 
-export default function LoginPage() {
+const LoginPage = () => {
   return (
-    <main className="bg-white min-h-full">
-      <ThemeProvider>
-        <LoginForm />
-      </ThemeProvider>
-    </main>
+    <div>
+      <LoginForm />
+    </div>
   );
-}
+};
+
+export default LoginPage;
