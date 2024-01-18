@@ -42,16 +42,10 @@ export const { signIn, signOut, auth } = NextAuth({
   ],
   // ADD ADDITIONAL INFORMATION TO SESSION
   callbacks: {
-    async jwt({
-      token,
-      user,
-    }: {
-      token: any;
-      user: User | AdapterUser | null;
-    }) {
+    async jwt({ token, user }: { token: any; user: typeof User | null }) {
       if (user) {
         // Assert the type of user to resolve TypeScript error
-        const typedUser = user as User;
+        const typedUser = user as typeof User;
 
         token.username = typedUser.username;
         token.img = typedUser.img;
