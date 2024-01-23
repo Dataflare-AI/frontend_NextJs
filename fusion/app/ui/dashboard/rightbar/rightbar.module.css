@@ -1,9 +1,5 @@
-.container {
-    position: fixed;
-}
-
 .item {
-    background: linear-gradient(to top, #182237, #253352);
+    background: linear-gradient(to top, #fff9ff, #dfdfdf);
     padding: 20px 24px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -50,8 +46,8 @@
     align-items: center;
     gap: 10px;
     width: max-content;
-    background-color: #5d57c9;
-    color: white;
+    background-color: #dfdfdf;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;

@@ -5,12 +5,10 @@ import { useFormState } from "react-dom";
 import Image from "next/image";
 
 const LoginForm = () => {
-  // const [state, formAction] = useFormState(authenticate, undefined);
+  const [state, formAction] = useFormState(authenticate, undefined);
 
   return (
-    <form
-    // action={formAction}
-    >
+    <form action={formAction}>
       <div className="flex flex-col md:flex-row h-screen">
         <div className="flex items-center justify-center w-full md:w-1/3 h-full relative md:ml-32 lg:bg-white">
           <Image
@@ -107,7 +105,7 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
-      {/* {state && state} */}
+      {state && state}
     </form>
   );
 };

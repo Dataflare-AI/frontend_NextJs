@@ -1,6 +1,9 @@
 import Image from "next/image";
 import MenuLink from "./menuLink/menuLink";
 import styles from "./sidebar.module.css";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 import {
   MdDashboard,
   MdSupervisedUserCircle,
@@ -14,19 +17,19 @@ import {
 } from "react-icons/md";
 import { FaFileExcel } from "react-icons/fa";
 
-import { auth, signOut } from "@/app/auth";
+// import { auth, signOut } from "@/app/auth";
 
 const menuItems = [
   {
-    title: "Pages",
+    title: "Paginas",
     list: [
       {
-        title: "Dashboard",
+        title: "Home",
         path: "/dashboard",
         icon: <MdDashboard />,
       },
       {
-        title: "Users",
+        title: "Usuários",
         path: "/dashboard/users",
         icon: <MdSupervisedUserCircle />,
       },
@@ -43,10 +46,10 @@ const menuItems = [
     ],
   },
   {
-    title: "Analytics",
+    title: "Análise",
     list: [
       {
-        title: "ImportFiles",
+        title: "Importação",
         path: "/dashboard/importFiles",
         icon: <FaFileExcel />,
       },
@@ -63,15 +66,15 @@ const menuItems = [
     ],
   },
   {
-    title: "User",
+    title: "Usuário",
     list: [
       {
-        title: "Settings",
+        title: "Configurações",
         path: "/dashboard/settings",
         icon: <MdOutlineSettings />,
       },
       {
-        title: "Help",
+        title: "Ajuda",
         path: "/dashboard/help",
         icon: <MdHelpCenter />,
       },
@@ -112,10 +115,12 @@ const Sidebar = async () => {
           await signOut();
         }}
       >
-        <button className={styles.logout}>
-          <MdLogout />
-          Logout
-        </button>
+        <Link href={"/login"}>
+          <button className={styles.logout}>
+            <MdLogout />
+            Logout
+          </button>
+        </Link>
       </form>
     </div>
   );

@@ -13,10 +13,10 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   /* --primary: black; */
-  --bgSoft: white;
-  --bg: white;
+  --bg: #ffffff;
+  --bgSoft: #fff9ff;
   --text: black;
-  --textSoft: #182237;
+  --textSoft: #131313;
 }
 
 * {

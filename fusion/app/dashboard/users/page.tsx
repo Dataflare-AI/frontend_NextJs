@@ -13,20 +13,20 @@ const UsersPage = async ({ searchParams }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <Search placeholder="Search for a user..." />
+        <Search placeholder="Pesquisar..." />
         <Link href="/dashboard/users/add">
-          <button className={styles.addButton}>Add New</button>
+          <button className={styles.addButton}>Adicionar Novo</button>
         </Link>
       </div>
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Name</td>
+            <td>Nome</td>
             <td>Email</td>
-            <td>Created At</td>
-            <td>Role</td>
+            <td>Criação</td>
+            <td>Tipo</td>
             <td>Status</td>
-            <td>Action</td>
+            <td>Ações</td>
           </tr>
         </thead>
         <tbody>
@@ -52,13 +52,13 @@ const UsersPage = async ({ searchParams }) => {
                 <div className={styles.buttons}>
                   <Link href={`/dashboard/users/${user.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
-                      View
+                      Ver
                     </button>
                   </Link>
                   <form action={deleteUser}>
                     <input type="hidden" name="id" value={user.id} />
                     <button className={`${styles.button} ${styles.delete}`}>
-                      Delete
+                      Excluir
                     </button>
                   </form>
                 </div>

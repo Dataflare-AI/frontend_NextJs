@@ -7,6 +7,10 @@
 .button {
   padding: 5px 10px;
   cursor: pointer;
+  border-radius: 5px;
+  background-color: #dfdfdf;
+  color: var(--text);
+  border: none;
 }
 
 .button:disabled {

@@ -17,7 +17,7 @@
   padding: 30px;
   background-color: var(--bg);
   color: var(--text);
-  border: 2px solid #2e374a;
+  border: 1px solid black;
   border-radius: 5px;
   margin-bottom: 30px;
 }
@@ -34,9 +34,10 @@
 .form button {
   width: 100%;
   padding: 30px;
-  background-color: teal;
+  background-color: #dfdfdf;
   color: var(--text);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 20px;
 }
