@@ -112,7 +112,6 @@ const Sidebar = async () => {
       <form
         action={async () => {
           "use server";
-          await signOut();
         }}
       >
         <Link href={"/login"}>
